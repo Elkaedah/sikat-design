@@ -1,0 +1,9 @@
+$font-family1: Bebas Neue;
+$font-family2: Montserrat;
+// styles defaults
+@mixin character-style($font, $style, $size, $color) {
+    font-family: $font;
+    font-style: $style;
+    font-size: $size;
+    color: $color;
+}

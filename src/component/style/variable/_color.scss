@@ -1,0 +1,20 @@
+$whiteColor: rgb(255, 255, 255);
+$primaryColor: rgb(247, 127, 0);
+$secondaryColor: rgb(0, 48, 73);
+$forthColor: #FCBF49;
+$Default2: #C4C4C4;
+// $warna9: #6C63FF;
+$blackColor: #000000;
+$Default: #fff6d2;
+// background style
+.bg-transparent {
+    background: transparent;
+}
+
+.bg-primary {
+    background: $primaryColor;
+}
+
+.bg-white {
+    background: $whiteColor;
+}

@@ -1,0 +1,33 @@
+$margin-left-right: 12%;
+$size-default:0px;
+$size-icon:180px;
+$margin-content:2%;
+$margin-menu:2%;
+// maxinx style
+@mixin default-margin {
+    padding: $size-default;
+    margin: $size-default;
+}
+
+@mixin default-size($width, $margin) {
+    width: $width;
+    margin: $margin;
+}
+
+@mixin icon {
+    width: $size-icon;
+    margin: 12px auto;
+}
+
+@mixin margin-border {
+    margin-left: $margin-left-right;
+    margin-right: $margin-left-right;
+}
+
+@mixin margin-content {
+    margin: $margin-content;
+}
+
+@mixin menu {
+    margin: $margin-menu;
+}

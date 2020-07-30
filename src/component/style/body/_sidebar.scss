@@ -1,0 +1,44 @@
+    .sidebar {
+        @include default-margin;
+        position: -webkit-sticky;
+        position: sticky;
+        width: 50vh;
+        background: $Default;
+        margin-top: 0px;
+    }
+    
+    .brand-icon {
+        text-align: center;
+        @include icon();
+    }
+    
+    .select {
+        li {
+            list-style: none;
+            @include menu;
+            margin: 12%;
+        }
+        .icon {
+            text-align: left;
+            @include default-size(18px, 1%);
+        }
+        a {
+            text-decoration: none;
+            @include character-style($font-family1, medium, 20px, $blackColor);
+            &:hover {
+                color: $primaryColor;
+            }
+            &:active {
+                color: $primaryColor;
+            }
+        }
+        .aktif {
+            color: $primaryColor;
+        }
+        .block {
+            text-align: end;
+            padding: 2px;
+            right: 0%;
+            background-color: $primaryColor;
+        }
+    }

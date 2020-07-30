@@ -1,0 +1,96 @@
+.bg-transparent {
+  background: transparent;
+}
+
+.bg-primary {
+  background: #f77f00;
+}
+
+.bg-white {
+  background: white;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px #f77f00;
+          box-shadow: inset 0 0 5px #f77f00;
+  border-radius: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f77f00;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+.sidebar {
+  padding: 0px;
+  margin: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+  width: 50vh;
+  background: #fff6d2;
+  margin-top: 0px;
+}
+
+.brand-icon {
+  text-align: center;
+  width: 180px;
+  margin: 12px auto;
+}
+
+.select li {
+  list-style: none;
+  margin: 2%;
+  margin: 12%;
+}
+
+.select .icon {
+  text-align: left;
+  width: 18px;
+  margin: 1%;
+}
+
+.select a {
+  text-decoration: none;
+  font-family: Bebas Neue;
+  font-style: medium;
+  font-size: 20px;
+  color: #000000;
+}
+
+.select a:hover {
+  color: #f77f00;
+}
+
+.select a:active {
+  color: #f77f00;
+}
+
+.select .aktif {
+  color: #f77f00;
+}
+
+.select .block {
+  text-align: end;
+  padding: 2px;
+  right: 0%;
+  background-color: #f77f00;
+}
+/*# sourceMappingURL=index.css.map */
