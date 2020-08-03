@@ -1,0 +1,38 @@
+@import './variable/color';
+@import './variable/font';
+@import './variable/size';
+body {
+    margin: 0;
+    padding: 0;
+    background: $Default;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px $primaryColor;
+    border-radius: 2px;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: $Default;
+    border-radius: 5px;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: $primaryColor;
+}

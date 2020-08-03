@@ -1,5 +1,7 @@
 import React from "react";
+import "./component/style/body.scss";
 import Sidebar from "./component/sidebar";
+import Chart from "./component/chart";
 import { Row, Container, Col } from "react-bootstrap";
 
 function App() {
@@ -10,15 +12,19 @@ function App() {
         <
         Row >
         <
-        Col className = "col-md-4" >
+        Col className = "col-md-3 bg-white position-sticky" >
         <
         Sidebar / >
         <
-        /Col>{" "} <
-        Col className = "col-md-7" > ini nanti isinya < /Col>{" "} <
-        /Row>{" "} <
-        /Container>{" "} <
-        /div>
+        /Col> <
+        Col className = "col-md-9" >
+        <
+        Chart / >
+        <
+        /Col> < /
+        Row > { " " } <
+        /Container>{" "} < /
+        div >
     );
 }
 

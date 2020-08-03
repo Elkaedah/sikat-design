@@ -1,9 +1,6 @@
     .sidebar {
         @include default-margin;
-        position: -webkit-sticky;
-        position: sticky;
-        width: 50vh;
-        background: $Default;
+        background: $whiteColor;
         margin-top: 0px;
     }
     
@@ -13,19 +10,23 @@
     }
     
     .select {
+        padding-left: 0px;
+        text-align: left;
+        margin-top: 68px;
         li {
             list-style: none;
-            @include menu;
-            margin: 12%;
+            margin: 9.9%;
         }
         .icon {
-            text-align: left;
-            @include default-size(18px, 1%);
+            @include default-size(18px, 12px);
+            @include opacity-fill($blackColor, 0.49887)
         }
         a {
             text-decoration: none;
             @include character-style($font-family1, medium, 20px, $blackColor);
+            @include opacity-clr($blackColor, 0.4987);
             &:hover {
+                text-decoration: none;
                 color: $primaryColor;
             }
             &:active {
@@ -36,9 +37,11 @@
             color: $primaryColor;
         }
         .block {
+            display: inline-block;
+            position: relative;
             text-align: end;
-            padding: 2px;
-            right: 0%;
+            font-size: 12px;
+            line-height: 14px;
             background-color: $primaryColor;
         }
     }

@@ -1,0 +1,30 @@
+.chart {
+    display: block;
+    background: $whiteColor;
+    @include default-size(auto, 3%);
+    border-radius: 5px;
+    .judul {
+        text-align: left;
+        @include default-size(auto, 1%);
+        font-weight: bold;
+        font-size: 28px;
+    }
+    .select {
+        text-align: right;
+        background: #EEEEEE;
+        margin-left: 49%;
+        border-radius: 5px;
+        padding: 10px;
+        a {
+            text-align: center;
+            @include character-style($font-family2, medium, 16px, #6C63FF);
+            padding: 10px;
+            &:hover {
+                background: $primaryColor;
+                border-radius: 5px;
+                color: $whiteColor;
+                padding: 10px;
+            }
+        }
+    }
+}

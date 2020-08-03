@@ -1,10 +1,10 @@
 $whiteColor: rgb(255, 255, 255);
 $primaryColor: rgb(247, 127, 0);
 $secondaryColor: rgb(0, 48, 73);
-$forthColor: #FCBF49;
-$Default2: #C4C4C4;
+$forthColor: #fcbf49;
+$Default2: #c4c4c4;
 // $warna9: #6C63FF;
-$blackColor: #000000;
+$blackColor: rgb(0, 0, 0);
 $Default: #fff6d2;
 // background style
 .bg-transparent {
@@ -17,4 +17,20 @@ $Default: #fff6d2;
 
 .bg-white {
     background: $whiteColor;
+}
+
+.bg-default {
+    background-color: $Default;
+}
+
+@mixin opacity-bg($color, $op) {
+    background: rgba($color, $op);
+}
+
+@mixin opacity-clr($color, $op) {
+    color: rgba($color, $op)
+}
+
+@mixin opacity-fill($color, $op) {
+    fill: rgba($color, $op)
 }
