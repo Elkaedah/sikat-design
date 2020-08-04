@@ -1,47 +1,48 @@
     .sidebar {
         @include default-margin;
+        @include character-style($font-family1, medium, 20px, $blackColor);
+        font-weight: bold;
         background: $whiteColor;
         margin-top: 0px;
-    }
-    
-    .brand-icon {
-        text-align: center;
-        @include icon();
-    }
-    
-    .select {
-        padding-left: 0px;
-        text-align: left;
-        margin-top: 68px;
-        li {
-            list-style: none;
-            margin: 9.9%;
+        .brand-icon {
+            text-align: center;
+            @include icon();
         }
-        .icon {
-            @include default-size(18px, 12px);
-            @include opacity-fill($blackColor, 0.49887)
-        }
-        a {
-            text-decoration: none;
-            @include character-style($font-family1, medium, 20px, $blackColor);
-            @include opacity-clr($blackColor, 0.4987);
-            &:hover {
+        .select {
+            padding-left: 0px;
+            text-align: left;
+            margin-top: 68px;
+            li {
+                list-style: none;
+                margin: 9.9%;
+            }
+            .icon {
+                @include default-size(18px, 12px);
+                @include opacity-fill($blackColor, 0.49887);
+            }
+            a {
+                @include text-size;
+                padding: 2px;
                 text-decoration: none;
-                color: $primaryColor;
+                @include opacity-clr($blackColor, 0.2987);
+                &:hover {
+                    text-decoration: none;
+                    color: $blackColor;
+                }
+                &:active {
+                    color: $primaryColor;
+                }
             }
-            &:active {
-                color: $primaryColor;
+            .aktif {
+                color: $blackColor;
             }
-        }
-        .aktif {
-            color: $primaryColor;
-        }
-        .block {
-            display: inline-block;
-            position: relative;
-            text-align: end;
-            font-size: 12px;
-            line-height: 14px;
-            background-color: $primaryColor;
+            .block {
+                display: inline-block;
+                position: relative;
+                text-align: end;
+                font-size: 12px;
+                line-height: 14px;
+                background-color: $primaryColor;
+            }
         }
     }

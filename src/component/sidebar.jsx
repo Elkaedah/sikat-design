@@ -29,10 +29,11 @@ class Sidebar extends React.Component {
               <img className="icon" src={icon1} alt="icon"></img>Bencana Alam
             </a>
           </li>
+
           <li>
             <a href="#">
-              <img className="icon" src={icon1} alt="icon"></img>Penanggdivangan
-              Bencana
+              <img className="icon" src={icon1} alt="icon"></img>
+              Penanggulangan Bencana
             </a>
           </li>
           <li>

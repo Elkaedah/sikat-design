@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-import 'bootstrap/dist/css/bootstrap.css';
-import 'jquery/dist/jquery'
-import 'bootstrap/dist/js/bootstrap'
+import "bootstrap/dist/css/bootstrap.css";
+import "jquery/dist/jquery";
+import "bootstrap/dist/js/bootstrap";
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
+import Chart from "./component/chart";
+
 ReactDOM.render(
     // ini pasti rusak
     <

@@ -17,6 +17,8 @@ $margin-menu:2%;
 @mixin icon {
     width: $size-icon;
     margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @mixin margin-border {
@@ -32,11 +34,8 @@ $margin-menu:2%;
     margin: $margin-menu;
 }
 
-.position-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+@mixin text-size {
+    text-overflow: ellipsis;
+    overflow: auto;
+    white-space: nowrap;
 }

@@ -10,21 +10,34 @@
         font-size: 28px;
     }
     .select {
+        height: auto;
         text-align: right;
+        margin-top: 42px;
         background: #EEEEEE;
-        margin-left: 49%;
+        margin-left: 54.8%;
         border-radius: 5px;
-        padding: 10px;
+        padding: 8px;
+        padding-left: 0px;
         a {
+            @include text-size;
+            text-decoration: none;
+            height: auto;
             text-align: center;
             @include character-style($font-family2, medium, 16px, #6C63FF);
-            padding: 10px;
-            &:hover {
-                background: $primaryColor;
+            padding: 8px;
+            &:hover,
+             :active {
+                @include opacity-bg($primaryColor, 0.5);
                 border-radius: 5px;
                 color: $whiteColor;
-                padding: 10px;
+                padding: 8px;
             }
+        }
+        .active-select {
+            background: $primaryColor;
+            border-radius: 5px;
+            color: $whiteColor;
+            padding: 9px;
         }
     }
 }

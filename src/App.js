@@ -16,16 +16,17 @@ function App() {
         <
         Sidebar / >
         <
-        /Col> <
+        /Col>{" "} <
         Col className = "col-md-9" >
         <
         Chart / >
         <
-        /Col> < /
-        Row > { " " } <
-        /Container>{" "} < /
-        div >
+        /Col>{" "} <
+        /Row>{" "} <
+        /Container>{" "} <
+        /div>
     );
 }
+
 
 export default App;

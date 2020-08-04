@@ -7,22 +7,6 @@ $Default2: #c4c4c4;
 $blackColor: rgb(0, 0, 0);
 $Default: #fff6d2;
 // background style
-.bg-transparent {
-    background: transparent;
-}
-
-.bg-primary {
-    background: $primaryColor;
-}
-
-.bg-white {
-    background: $whiteColor;
-}
-
-.bg-default {
-    background-color: $Default;
-}
-
 @mixin opacity-bg($color, $op) {
     background: rgba($color, $op);
 }
