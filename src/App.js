@@ -3,6 +3,7 @@ import "./component/style/body.scss";
 import Sidebar from "./component/sidebar";
 import Navbar from "./component/navbar";
 import Chart from "./component/chart";
+import Welcome from "./component/welcome";
 import { Row, Container, Col } from "react-bootstrap";
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
         Col className = "col-md-10" >
         <
         Navbar / >
+        <
+        Welcome / >
         <
         Chart / >
         <

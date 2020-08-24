@@ -1,5 +1,5 @@
 .judul {
-    @include character-style($font-family1, large, 25px, $blackColor);
+    @include character-style($font-family1, medium, 24px, $blackColor);
 }
 
 .profile-icon {

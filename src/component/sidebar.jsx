@@ -2,7 +2,6 @@ import React from "react";
 import "./style/index.scss";
 import foto from "./img/Asset 8.svg";
 import icon1 from './img/Dashboard.svg'
-// import { Dropdown, Container, Row, Col } from "react-bootstrap";
 
 class Sidebar extends React.Component {
   render() {

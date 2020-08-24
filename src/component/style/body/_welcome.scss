@@ -1,0 +1,20 @@
+.welcome {
+    @include opacity-bg($primaryColor, 0.3);
+    @extend .chart;
+    color: $primaryColor;
+    font-weight: bolder;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+    align-content: center;
+    .logo {
+        margin-top: 6%;
+    }
+    .ilustration {
+        margin-top: -40%;
+    }
+    div {
+        margin-top: 3%;
+    }
+}
