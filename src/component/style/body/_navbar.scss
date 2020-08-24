@@ -1,0 +1,8 @@
+.judul {
+    @include character-style($font-family1, large, 25px, $blackColor);
+}
+
+.profile-icon {
+    width: 40px;
+    border-radius: 50%;
+}
