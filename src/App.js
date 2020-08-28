@@ -1,5 +1,6 @@
 import React from "react";
 import "./component/style/body.scss";
+import Profile from "./component/profile";
 import Sidebar from "./component/sidebar";
 import Navbar from "./component/navbar";
 import Chart from "./component/chart";
@@ -11,6 +12,8 @@ function App() {
         div className = "wrapper" >
         <
         Container fluid >
+        <
+        Profile / >
         <
         Row >
         <
