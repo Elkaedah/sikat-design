@@ -4,17 +4,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import "jquery/dist/jquery";
 import "bootstrap/dist/js/bootstrap";
 import * as serviceWorker from "./serviceWorker";
-import App from "./App";
-import Chart from "./component/chart";
+import Apk from "./App";
 
-ReactDOM.render(
-    // ini pasti rusak
-    <
-    React.StrictMode >
-    <
-    App / >
-    <
-    /React.StrictMode>,
+ReactDOM.render( <
+    Apk / > ,
     document.getElementById("root")
 );
 
