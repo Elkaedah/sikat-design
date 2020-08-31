@@ -1,0 +1,67 @@
+.editDataLogistik {
+  margin-top: 20px;
+
+  .dataTitle {
+    font-family: $font-family1;
+    color: $primaryColor;
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 3px;
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+    margin-top: -10px;
+    margin-bottom: 50px;
+    padding: 0;
+  }
+
+  form {
+    font-family: $font-family2;
+  }
+
+  input {
+    border: none;
+    border-radius: 10px;
+  }
+  select {
+    border: none;
+    border-radius: 10px;
+  }
+
+  .nama {
+    margin-bottom: 20px;
+  }
+  .kategori {
+    margin-bottom: 20px;
+  }
+  .supplier {
+    margin-bottom: 20px;
+  }
+  .expired {
+    margin-bottom: 50px;
+  }
+
+  .submit {
+    margin-bottom: 20px;
+  }
+  .submit input {
+    background: linear-gradient(to left, $primaryColor, $fiveColor);
+    color: $whiteColor;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  // .reset {
+  //   margin-bottom: 30px;
+  // }
+  // .reset a {
+  //   border: none;
+  //   border-radius: 10px;
+  //   color: $whiteColor;
+  //   letter-spacing: 1px;
+  //   font-weight: bold;
+  //   font-size: 20px;
+  // }
+}

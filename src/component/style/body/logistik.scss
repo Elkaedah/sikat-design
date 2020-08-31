@@ -1,0 +1,61 @@
+.logistik {
+  margin-top: 20px;
+
+  .dataTitle {
+    font-family: $font-family1;
+    color: $primaryColor;
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 3px;
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    padding: 0;
+  }
+
+  .box-card {
+    background-color: $whiteColor;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .imgCard {
+    padding: 20px 0px 0px 20px;
+    width: 95%;
+    margin-top: 10px;
+  }
+
+  .boxTitle {
+    font-family: $font-family1;
+    color: $primaryColor;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 30px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .btn-custom1 {
+    font-family: $font-family2;
+    color: $whiteColor;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to left, $primaryColor, $fiveColor);
+    text-align: left;
+  }
+
+  .IcoNext {
+    float: right;
+    width: 25px;
+    margin-right: -5px;
+  }
+}

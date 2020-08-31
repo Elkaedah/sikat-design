@@ -1,0 +1,92 @@
+.dataLogistik {
+  margin-top: 20px;
+
+  .dataTitle {
+    font-family: $font-family1;
+    color: $primaryColor;
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 3px;
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    padding: 0;
+  }
+
+  .search {
+    width: 70%;
+    border: none;
+    border-radius: 8px;
+    padding-left: 45px;
+  }
+
+  .icoSearch {
+    position: absolute;
+    margin-left: 10px;
+    top: 8px;
+    width: 25px;
+    padding: 2px;
+  }
+
+  .btn-custom1 {
+    font-family: $font-family2;
+    color: $whiteColor;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to left, $primaryColor, $fiveColor);
+    float: right;
+  }
+
+  .row {
+    margin-bottom: 20px;
+  }
+
+  .cardTable {
+    background-color: $whiteColor;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 15px;
+    padding: 0px 20px 5px 20px;
+    margin-bottom: 30px;
+  }
+
+  table {
+    font-family: $font-family2;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .edit {
+    margin-right: 8px;
+  }
+
+  .icoOption {
+    width: 15px;
+  }
+
+  .pagination a {
+    font-family: $font-family2;
+    color: $primaryColor;
+    font-weight: bolder;
+  }
+
+  .arrowPrev {
+    position: relative;
+    top: 4px;
+    margin-right: 10px;
+  }
+
+  .arrowNext {
+    position: relative;
+    top: 4px;
+    margin-left: 10px;
+  }
+
+  .icoPage {
+    width: 25px;
+  }
+}

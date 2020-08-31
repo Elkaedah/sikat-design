@@ -2,19 +2,20 @@ $whiteColor: rgb(255, 255, 255);
 $primaryColor: rgb(247, 127, 0);
 $secondaryColor: rgb(0, 48, 73);
 $forthColor: #fcbf49;
+$fiveColor: #ffa23d;
 $Default2: #c4c4c4;
 // $warna9: #6C63FF;
 $blackColor: rgb(0, 0, 0);
 $Default: #fff6d2;
 // background style
 @mixin opacity-bg($color, $op) {
-    background: rgba($color, $op);
+  background: rgba($color, $op);
 }
 
 @mixin opacity-clr($color, $op) {
-    color: rgba($color, $op)
+  color: rgba($color, $op);
 }
 
 @mixin opacity-fill($color, $op) {
-    fill: rgba($color, $op)
+  fill: rgba($color, $op);
 }

@@ -6,10 +6,7 @@ import "bootstrap/dist/js/bootstrap";
 import * as serviceWorker from "./serviceWorker";
 import Apk from "./App";
 
-ReactDOM.render( <
-    Apk / > ,
-    document.getElementById("root")
-);
+ReactDOM.render(<Apk />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

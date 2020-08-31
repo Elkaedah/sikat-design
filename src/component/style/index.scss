@@ -1,10 +1,20 @@
-@import './variable/color';
-@import './variable/font';
-@import './variable/size';
+@import "./variable/color";
+@import "./variable/font";
+@import "./variable/size";
 //inside body style
-@import './body/sidebar';
-@import './body/chart';
-@import'./body/navbar';
-@import'./body/welcome';
-@import './body/profile';
+@import "./body/sidebar";
+@import "./body/chart";
+@import "./body/navbar";
+@import "./body/welcome";
+@import "./body/profile";
 // styling body
+
+// Logistik
+@import "./body/logistik.scss";
+@import "./body/dataLogistik.scss";
+@import "./body/addDataLogistik.scss";
+@import "./body/editDataLogistik.scss";
+
+@import "./body/dataSupplier.scss";
+@import "./body/addDataSupplier.scss";
+@import "./body/editDataSupplier.scss";
