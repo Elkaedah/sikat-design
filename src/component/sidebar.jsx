@@ -1,8 +1,26 @@
 import React from "react";
 import "./style/index.scss";
 import foto from "./img/Asset 8.svg";
+import Foto1 from "./img/Dashboard1.svg";
+import Foto2 from "./img/Dashboard.svg";
 import { BrowserRouter as Router, useRouteMatch, Link } from "react-router-dom";
 // import routes from "./js/routes.js";
+
+function LinkInto({ label, to, activeOnlyWhenExact }) {
+  let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact,
+  });
+  return (
+    <div className={match ? "aktif" : ""}>
+      {/* {match && <img src={Foto2} className="icon" />} */}
+      <img src={match ? Foto2 : Foto1} className="icon"></img>
+      <Link className={match ? "aktif" : ""} to={to}>
+        {label}
+      </Link>
+    </div>
+  );
+}
 
 export default class Sidebar extends React.Component {
   render() {
@@ -13,47 +31,24 @@ export default class Sidebar extends React.Component {
         </div>
         <ul className="select text-break">
           <li>
-            <Link to="/" >
-              Dashboard
-            </Link>
+            <LinkInto label="Dashboard" to="/" activeOnlyWhenExact={true} />
           </li>
           <li>
-            <Link to="/Logistik">
-              {/* <img className="icon" src={icon1} alt="icon"></img> */}
-              Logistik
-            </Link>
+            <LinkInto
+              label="Logistik"
+              to="/Logistik"
+              activeOnlyWhenExact={true}
+            />
           </li>
           <li>
-            <Link to="/Bencana">
-              {/* <img className="icon" src={icon1} alt="icon"></img> */}
-              Bencana Alam
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/Penanggulangan">
-              {/* <img className="icon text" src={icon1} alt="icon"></img> */}
-              Penanggulangan Bencana
-            </Link>
+            <LinkInto
+              label="Penanggulangan Bencana"
+              to="/Penanggulangan"
+              activeOnlyWhenExact={true}
+            />
           </li>
           <li>
-            <Link to="/Pegawai">
-              {/* <img className="icon" src={icon1} alt="icon"></img> */}
-              Pegawai BPBD
-            </Link>
-          </li>
-          <li>
-            <Link to="/Relawan">
-              {" "}
-              {/* <img className="icon" src={icon1} alt="icon"></img> */}
-              Relawan
-            </Link>
-          </li>
-          <li>
-            <Link to="/Laporan">
-              {/* <img className="icon" src={icon1} alt="icon"></img> */}
-              Laporan
-            </Link>
+            <LinkInto label="User" to="/Pegawai" activeOnlyWhenExact={true} />
           </li>
         </ul>
       </div>
