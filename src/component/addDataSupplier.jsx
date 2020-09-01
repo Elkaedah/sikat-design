@@ -2,8 +2,43 @@ import React from "react";
 import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class AddDataSupplier extends React.Component {
+  state = {
+    form: {nama: "", alamat: ""},
+    url: "http://localhost:8000/api/supplier/add"
+  };
+
+  createSupplier = async data => {
+    await axios.post(this.state.url, {
+        nama: data.nama,
+        alamat: data.alamat
+      })
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    let form = this.state.form;
+    form[name] = value;
+    this.setState({ form });
+  };
+
+  onFormSubmit = data => {
+    this.createSupplier(data)
+  };
+
+  clearFormFields = () => {
+    console.log("clear");
+    // // change form state
+    // this.setState({
+    //   supplier: { nama: "", alamat: "" }
+    // });
+
+    // // clear form fields
+    // document.querySelector(".form").reset();
+  };
+
   render() {
     return (
       <Container className="container-fluid">
@@ -32,7 +67,13 @@ class AddDataSupplier extends React.Component {
                 <h3>Nama</h3>
               </Col>
               <Col className="col-md-9">
-                <input type="text" className="form-control" />
+                <input 
+                  type="text" 
+                  name="nama" 
+                  id="nama"
+                  className="form-control" 
+                  onChange={this.handleChange}  
+                  value={this.state.form.nama} />
               </Col>
             </Row>
             <Row className="alamat">
@@ -45,6 +86,8 @@ class AddDataSupplier extends React.Component {
                   id="alamat"
                   className="form-control"
                   rows="10"
+                  onChange={this.handleChange} 
+                  value={this.state.form.alamat}
                 ></textarea>
               </Col>
             </Row>
@@ -55,15 +98,16 @@ class AddDataSupplier extends React.Component {
                   type="submit"
                   value="Tambah Data"
                   className="form-control"
+                  onClick={this.onFormSubmit}
                 />
               </Col>
             </Row>
             <Row className="reset">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-                <a href="" className="form-control btn btn-danger btn-reset">
+                <button onClick={this.clearFormFields} className="form-control btn btn-danger btn-reset">
                   Reset
-                </a>
+                </button>
               </Col>
             </Row>
           </form>
