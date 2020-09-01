@@ -8,11 +8,11 @@ render(){
     return (
       <Nav
         className="justify-content-between"
-        activeKey="/home"
+        activeKey="/"
         onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
       >
         <Nav.Item>
-          <Nav.Link className="judul" href="/home">Dashboard</Nav.Link>
+          <Nav.Link className="judul" href="/">Dashboard</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-1">

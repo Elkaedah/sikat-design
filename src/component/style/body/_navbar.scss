@@ -1,8 +1,9 @@
-.judul {
-    @include character-style($font-family1, medium, 24px, $blackColor);
-}
-
-.profile-icon {
-    width: 40px;
-    border-radius: 50%;
+.nav {
+    .judul {
+        @include character-style($font-family1, medium, 24px, $blackColor);
+    }
+    .profile-icon {
+        width: 40px;
+        border-radius: 50%;
+    }
 }

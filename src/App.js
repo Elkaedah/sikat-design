@@ -4,7 +4,6 @@ import "./component/style/index.scss";
 import Chart from "./component/chart";
 import Welcome from "./component/welcome";
 import Sidebar from "./component/sidebar";
-import icon1 from "./component/img/Dashboard.svg";
 import profile from "./component/img/profile-exam.jpg";
 // Logistik
 import Logistik from "./component/logistik";
@@ -107,7 +106,7 @@ export default function App() {
         <
         Row >
         <
-        Col className = "col-md-2 bg-white position-sticky" >
+        Col className = "col-md-2 bg-white position-sticky shadow" >
         <
         Sidebar / >
         <
@@ -137,6 +136,10 @@ function Dashboard() {
         div className = "main" >
         <
         Welcome > < /Welcome> <
+        Chart / >
+        <
+        Chart / >
+        <
         Chart / >
         <
         /div>

@@ -50,6 +50,9 @@ export default class Sidebar extends React.Component {
           <li>
             <LinkInto label="User" to="/Pegawai" activeOnlyWhenExact={true} />
           </li>
+          <li>
+            <LinkInto label="Laporan" to="/Laporan" activeOnlyWhenExact={true} />
+          </li>
         </ul>
       </div>
     );
