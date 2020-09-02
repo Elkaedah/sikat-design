@@ -4,26 +4,11 @@ import icoSearch from "./img/logistik/IcoSearch.svg";
 import icoEdit from "./img/logistik/IcoEdit.svg";
 import arrowNext from "./img/logistik/arrow-next.svg";
 import arrowPrev from "./img/logistik/arrow-prev.svg";
-import axios from "axios";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class DataSupplier extends React.Component {
-  state = {
-    suppliers: [],
-    url: "http://localhost:8000/api/supplier"
-  };
-
-  getSupplier = async () => {
-    const suppliers = await axios.get(this.state.url);
-    this.setState({suppliers: suppliers.data});
-  }
-
-  componentDidMount(){
-    this.getSupplier();
-  }
-
   render() {
     return (
       <Container className="container-fluid">
@@ -66,29 +51,47 @@ class DataSupplier extends React.Component {
             <table className="table table-striped">
               <thead className="border-top-0">
                 <tr>
-                  <th>ID</th>
                   <th>Nama</th>
                   <th>Alamat</th>
                   <th>Opsi</th>
                 </tr>
               </thead>
               <tbody>
-                  {this.state.suppliers.map((supplier) => {
-                      return (
-                        <tr>
-                            <td>{supplier.id}</td>
-                            <td>{supplier.nama}</td>
-                            <td>{supplier.alamat}</td>
-                            <td>
-                            <Link to={`/EditDataSupplier?id=${supplier.id}`}>
-                                <button class="btn btn-warning edit">
-                                <img src={icoEdit} alt="edit" className="icoOption" />
-                                </button>
-                            </Link>
-                            </td>
-                        </tr>
-                      );
-                  })}
+                <tr>
+                  <td>PT. Bansos Indonesia</td>
+                  <td>
+                    Jl. Batuakik, Desa Rora, Kec Klojen, Kota Malang 66284
+                  </td>
+                  <td>
+                    <Link to="/EditDataSupplier">
+                      <a href="#" class="btn btn-warning edit">
+                        <img src={icoEdit} alt="edit" className="icoOption" />
+                      </a>
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PT. Bansos Indonesia</td>
+                  <td>
+                    Jl. Batuakik, Desa Rora, Kec Klojen, Kota Malang 66284
+                  </td>
+                  <td>
+                    <a href="#" class="btn btn-warning edit">
+                      <img src={icoEdit} alt="edit" className="icoOption" />
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PT. Bansos Indonesia</td>
+                  <td>
+                    Jl. Batuakik, Desa Rora, Kec Klojen, Kota Malang 66284
+                  </td>
+                  <td>
+                    <a href="#" class="btn btn-warning edit">
+                      <img src={icoEdit} alt="edit" className="icoOption" />
+                    </a>
+                  </td>
+                </tr>
               </tbody>
             </table>
 
@@ -121,9 +124,8 @@ class DataSupplier extends React.Component {
                 </li>
               </ul>
             </nav>
+          </div>
         </div>
-
-        </div> 
       </Container>
     );
   }
