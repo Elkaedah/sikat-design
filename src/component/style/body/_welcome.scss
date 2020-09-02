@@ -1,6 +1,7 @@
 .welcome {
     @include opacity-bg($primaryColor, 0.3);
     @extend .chart;
+    margin: 1%;
     color: $primaryColor;
     font-weight: bolder;
     font-size: 24px;

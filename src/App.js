@@ -2,6 +2,7 @@ import React from "react";
 import "./component/style/body.scss";
 import "./component/style/index.scss";
 import Chart from "./component/chart";
+import Chart2 from "./component/chart2";
 import Welcome from "./component/welcome";
 import Sidebar from "./component/sidebar";
 import profile from "./component/img/profile-exam.jpg";
@@ -138,8 +139,19 @@ function Dashboard() {
         Welcome > < /Welcome> <
         Chart / >
         <
+        Row >
+        <
+        Col md = { 9 } >
+        <
         Chart / >
         <
+        /Col> <
+        Col md = { 3 } >
+        <
+        Chart2 / >
+        <
+        /Col> <
+        /Row> <
         Chart / >
         <
         /div>

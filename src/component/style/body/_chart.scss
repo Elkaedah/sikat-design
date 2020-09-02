@@ -1,7 +1,7 @@
 .chart {
     display: block;
     background: $whiteColor;
-    @include default-size(auto, 3%);
+    @include default-size(auto, 1%);
     border-radius: 5px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     .judul {
