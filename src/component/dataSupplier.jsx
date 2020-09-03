@@ -4,11 +4,53 @@ import icoSearch from "./img/logistik/IcoSearch.svg";
 import icoEdit from "./img/logistik/IcoEdit.svg";
 import arrowNext from "./img/logistik/arrow-next.svg";
 import arrowPrev from "./img/logistik/arrow-prev.svg";
-
+import { getList } from './SupplierFunctions'
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class DataSupplier extends React.Component {
+  constructor() {
+      super()
+      this.state = {
+          id: '',
+          nama: '',
+          alamat: '',
+          items: []
+      }
+  }
+
+  componentDidMount() {
+      this.getAll()
+  }
+
+  getAll = () => {
+      getList().then(data => {
+          this.setState(
+              {
+                  items: [...data]
+              },
+              () => {
+                  console.log(this.state.items)
+              }
+          )
+      })
+  }
+
+  onEdit = (itemid, e) => {
+      e.preventDefault()
+
+      var data = [...this.state.items]
+      data.forEach((item, index) => {
+          if (item.id === itemid) {
+              this.setState({
+                  id: item.id,
+                  nama: item.nama,
+                  alamat: item.alamat
+              })
+          }
+      })
+  }
+
   render() {
     return (
       <Container className="container-fluid">
@@ -57,41 +99,29 @@ class DataSupplier extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>PT. Bansos Indonesia</td>
+              {this.state.items.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.nama}</td>
+                  <td>{item.alamat}</td>
                   <td>
-                    Jl. Batuakik, Desa Rora, Kec Klojen, Kota Malang 66284
-                  </td>
-                  <td>
-                    <Link to="/EditDataSupplier">
+                    {/* <Link to="/EditDataSupplier">
                       <a href="#" class="btn btn-warning edit">
                         <img src={icoEdit} alt="edit" className="icoOption" />
                       </a>
-                    </Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>PT. Bansos Indonesia</td>
-                  <td>
-                    Jl. Batuakik, Desa Rora, Kec Klojen, Kota Malang 66284
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-warning edit">
+                    </Link> */}
+                    <button
+                        href=""
+                        className="btn btn-warning edit"
+                        onClick={this.onEdit.bind(
+                            this,
+                            item.id
+                        )}
+                    >
                       <img src={icoEdit} alt="edit" className="icoOption" />
-                    </a>
+                    </button>
                   </td>
                 </tr>
-                <tr>
-                  <td>PT. Bansos Indonesia</td>
-                  <td>
-                    Jl. Batuakik, Desa Rora, Kec Klojen, Kota Malang 66284
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-warning edit">
-                      <img src={icoEdit} alt="edit" className="icoOption" />
-                    </a>
-                  </td>
-                </tr>
+              ))}
               </tbody>
             </table>
 

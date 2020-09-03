@@ -2,8 +2,39 @@ import React from "react";
 import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { getList, addItem, deleteItem, updateItem } from './SupplierFunctions'
 
 class AddDataSupplier extends React.Component {
+  constructor() {
+      super()
+      this.state = {
+          id: '',
+          nama: '',
+          alamat: '',
+          items: [],
+          form: { nama: "", alamat: "" }
+      }
+
+      this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  onChange = e => {
+      const { name, value } = e.target;
+      let form = this.state.form;
+      form[name] = value;
+      this.setState({ form });
+      // this.setState({
+      //     [e.target.name]: e.target.value
+      // })
+  }
+
+  onSubmit = e => {
+      e.preventDefault()
+      addItem(this.state.nama, this.state.alamat).then(() => {
+          this.getAll()
+      })
+  }
+
   render() {
     return (
       <Container className="container-fluid">
@@ -26,13 +57,18 @@ class AddDataSupplier extends React.Component {
             </ol>
           </nav>
 
-          <form action="#" method="post">
+          <form onSubmit={this.onSubmit} method="post">
             <Row className="nama">
               <Col className="col-md-2">
                 <h3>Nama</h3>
               </Col>
               <Col className="col-md-9">
-                <input type="text" className="form-control" />
+                <input type="text"
+                  className="form-control"
+                  id="nama"
+                  name="nama"
+                  value={this.state.form.nama || ''}
+                  onChange={this.onChange.bind(this)} />
               </Col>
             </Row>
             <Row className="alamat">
@@ -45,16 +81,24 @@ class AddDataSupplier extends React.Component {
                   id="alamat"
                   className="form-control"
                   rows="10"
+                  value={this.state.form.alamat || ''}
+                  onChange={this.onChange.bind(this)}
                 ></textarea>
               </Col>
             </Row>
             <Row className="submit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-                <input
+                {/* <input
                   type="submit"
                   value="Tambah Data"
                   className="form-control"
+                /> */}
+                <input
+                  type="submit"
+                  onClick={this.onSubmit.bind(this)}
+                  className="form-control"
+                  value="Tambah Data"
                 />
               </Col>
             </Row>
