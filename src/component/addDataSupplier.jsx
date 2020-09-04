@@ -3,6 +3,7 @@ import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getList, addItem, deleteItem, updateItem } from './SupplierFunctions'
+import axios from 'axios'
 
 class AddDataSupplier extends React.Component {
   constructor() {
@@ -11,28 +12,35 @@ class AddDataSupplier extends React.Component {
           id: '',
           nama: '',
           alamat: '',
-          items: [],
-          form: { nama: "", alamat: "" }
+          items: []
       }
 
       this.onSubmit = this.onSubmit.bind(this)
+      this.onChangeNama = this.onChangeNama.bind(this);
+      this.onChangeAlamat = this.onChangeAlamat.bind(this);
   }
 
-  onChange = e => {
-      const { name, value } = e.target;
-      let form = this.state.form;
-      form[name] = value;
-      this.setState({ form });
-      // this.setState({
-      //     [e.target.name]: e.target.value
-      // })
+  onChangeNama = (event) => {
+      this.setState({
+          nama:event.target.value
+      })
+  }
+
+  onChangeAlamat = (event) => {
+      this.setState({
+          alamat:event.target.value
+      })
   }
 
   onSubmit = e => {
       e.preventDefault()
-      addItem(this.state.nama, this.state.alamat).then(() => {
-          this.getAll()
-      })
+
+      let supplier = {
+        nama: this.state.nama,
+        alamat: this.state.alamat
+      };
+
+      addItem(supplier).then(() => {})
   }
 
   render() {
@@ -67,8 +75,8 @@ class AddDataSupplier extends React.Component {
                   className="form-control"
                   id="nama"
                   name="nama"
-                  value={this.state.form.nama || ''}
-                  onChange={this.onChange.bind(this)} />
+                  value={this.state.nama || ''}
+                  onChange={this.onChangeNama} />
               </Col>
             </Row>
             <Row className="alamat">
@@ -81,19 +89,14 @@ class AddDataSupplier extends React.Component {
                   id="alamat"
                   className="form-control"
                   rows="10"
-                  value={this.state.form.alamat || ''}
-                  onChange={this.onChange.bind(this)}
+                  value={this.state.alamat || ''}
+                  onChange={this.onChangeAlamat}
                 ></textarea>
               </Col>
             </Row>
             <Row className="submit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-                {/* <input
-                  type="submit"
-                  value="Tambah Data"
-                  className="form-control"
-                /> */}
                 <input
                   type="submit"
                   onClick={this.onSubmit.bind(this)}

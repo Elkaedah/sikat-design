@@ -17,6 +17,9 @@ export const addItem = data => {
             {
                 nama: data.nama,
                 alamat: data.alamat
+            },
+            {
+                headers: { 'Content-Type': 'application/json' }
             }
         )
         .then(function(response) {
