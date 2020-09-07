@@ -4,7 +4,6 @@ import icoSearch from "./img/logistik/IcoSearch.svg";
 import icoEdit from "./img/logistik/IcoEdit.svg";
 import arrowNext from "./img/logistik/arrow-next.svg";
 import arrowPrev from "./img/logistik/arrow-prev.svg";
-import { getList } from './SupplierFunctions'
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
@@ -141,7 +140,7 @@ class DataSupplier extends React.Component {
             </Col>
             <Col className="col-md-6">
               <Link to="/AddDataSupplier">
-                <a href="" className="btn btn-custom1">
+                <a href="#" className="btn btn-custom1">
                   Tambah Data
                 </a>
               </Link>

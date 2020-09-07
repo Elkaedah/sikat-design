@@ -2,7 +2,6 @@ import React from "react";
 import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
-import { getList, addItem, deleteItem, updateItem } from "./SupplierFunctions";
 import axios from "axios";
 
 class AddDataSupplier extends React.Component {
@@ -35,15 +34,16 @@ class AddDataSupplier extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    let supplier = {
-      nama: this.state.nama,
-      alamat: this.state.alamat,
-    };
-
-    addItem(supplier).then(() => {});
-
-    // redirect ke page table
-    this.props.history.push("/DataSupplier");
+    axios.post('http://localhost:8000/api/supplier', 
+        { 
+          nama: this.state.nama,
+          alamat: this.state.alamat
+        })
+        .then(response => {
+            console.log(response);
+            this.props.history.push("/DataSupplier");
+        });
+    
   };
 
   render() {
