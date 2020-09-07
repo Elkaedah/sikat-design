@@ -1,47 +1,50 @@
 import React from "react";
 import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { getList, addItem, deleteItem, updateItem } from './SupplierFunctions'
-import axios from 'axios'
+import { withRouter, Link } from "react-router-dom";
+import { getList, addItem, deleteItem, updateItem } from "./SupplierFunctions";
+import axios from "axios";
 
 class AddDataSupplier extends React.Component {
   constructor() {
-      super()
-      this.state = {
-          id: '',
-          nama: '',
-          alamat: '',
-          items: []
-      }
+    super();
+    this.state = {
+      id: "",
+      nama: "",
+      alamat: "",
+      items: [],
+    };
 
-      this.onSubmit = this.onSubmit.bind(this)
-      this.onChangeNama = this.onChangeNama.bind(this);
-      this.onChangeAlamat = this.onChangeAlamat.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChangeNama = this.onChangeNama.bind(this);
+    this.onChangeAlamat = this.onChangeAlamat.bind(this);
   }
 
   onChangeNama = (event) => {
-      this.setState({
-          nama:event.target.value
-      })
-  }
+    this.setState({
+      nama: event.target.value,
+    });
+  };
 
   onChangeAlamat = (event) => {
-      this.setState({
-          alamat:event.target.value
-      })
-  }
+    this.setState({
+      alamat: event.target.value,
+    });
+  };
 
-  onSubmit = e => {
-      e.preventDefault()
+  onSubmit = (e) => {
+    e.preventDefault();
 
-      let supplier = {
-        nama: this.state.nama,
-        alamat: this.state.alamat
-      };
+    let supplier = {
+      nama: this.state.nama,
+      alamat: this.state.alamat,
+    };
 
-      addItem(supplier).then(() => {})
-  }
+    addItem(supplier).then(() => {});
+
+    // redirect ke page table
+    this.props.history.push("/DataSupplier");
+  };
 
   render() {
     return (
@@ -71,12 +74,14 @@ class AddDataSupplier extends React.Component {
                 <h3>Nama</h3>
               </Col>
               <Col className="col-md-9">
-                <input type="text"
+                <input
+                  type="text"
                   className="form-control"
                   id="nama"
                   name="nama"
-                  value={this.state.nama || ''}
-                  onChange={this.onChangeNama} />
+                  value={this.state.nama || ""}
+                  onChange={this.onChangeNama}
+                />
               </Col>
             </Row>
             <Row className="alamat">
@@ -89,7 +94,7 @@ class AddDataSupplier extends React.Component {
                   id="alamat"
                   className="form-control"
                   rows="10"
-                  value={this.state.alamat || ''}
+                  value={this.state.alamat || ""}
                   onChange={this.onChangeAlamat}
                 ></textarea>
               </Col>
@@ -120,4 +125,4 @@ class AddDataSupplier extends React.Component {
   }
 }
 
-export default AddDataSupplier;
+export default withRouter(AddDataSupplier);
