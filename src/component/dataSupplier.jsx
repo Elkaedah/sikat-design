@@ -7,6 +7,8 @@ import arrowPrev from "./img/logistik/arrow-prev.svg";
 import { getList } from './SupplierFunctions'
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Pagination from "react-js-pagination";
+import axios from 'axios'
 
 class DataSupplier extends React.Component {
   constructor() {
@@ -15,25 +17,24 @@ class DataSupplier extends React.Component {
           id: '',
           nama: '',
           alamat: '',
-          items: []
+          items: null
       }
   }
 
-  componentDidMount() {
-      this.getAll()
+  componentWillMount() {
+      this.getList()
   }
 
-  getAll = () => {
-      getList().then(data => {
+  async getList(pageNumber = 1){
+      const url = 'http://localhost:8000/api/supplier?page=' + pageNumber;
+      const response = await axios.get(url);
           this.setState(
-              {
-                  items: [...data]
-              },
-              () => {
-                  console.log(this.state.items)
-              }
-          )
-      })
+            {
+              items: response.data
+            },
+            () => {
+              console.log(this.state.items)
+            });
   }
 
   onEdit = (itemid, e) => {
@@ -51,7 +52,65 @@ class DataSupplier extends React.Component {
       })
   }
 
+  renderSupplierList(){
+    const {data, current_page, per_page, total} = this.state.items;
+    return(
+      <div className="cardTable">
+        <table className="table table-striped">
+          <thead className="border-top-0">
+            <tr>
+              <th>Nama</th>
+              <th>Alamat</th>
+              <th>Opsi</th>
+            </tr>
+          </thead>
+          <tbody>
+          {data.map((item, index) => (
+            <tr key={index}>
+              <td>{item.nama}</td>
+              <td>{item.alamat}</td>
+              <td>
+                {/* <Link to="/EditDataSupplier">
+                  <a href="#" class="btn btn-warning edit">
+                    <img src={icoEdit} alt="edit" className="icoOption" />
+                  </a>
+                </Link> */}
+                <button
+                    href=""
+                    className="btn btn-warning edit"
+                    onClick={this.onEdit.bind(
+                        this,
+                        item.id
+                    )}
+                >
+                  <img src={icoEdit} alt="edit" className="icoOption" />
+                </button>
+              </td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <Pagination
+              hideFirstLastPages
+              innerClass="pagination justify-content-center"
+              activePage={current_page}
+              itemsCountPerPage={per_page}
+              totalItemsCount={total}
+              prevPageText={<i className='arrowPref'><img src={arrowPrev} alt="prev" className="icoPage" /></i>}
+              nextPageText={<i className='arrowNext'><img src={arrowNext} alt="next" className="icoPage" /></i>}
+              itemClass="page-item"
+              linkClass="page-link"
+              onChange={(pageNumber) => this.getList(pageNumber)}
+            />
+        </nav>
+      </div> 
+    )
+  }
+
   render() {
+    const {items} = this.state;
     return (
       <Container className="container-fluid">
         <div className="dataSupplier">
@@ -89,73 +148,8 @@ class DataSupplier extends React.Component {
             </Col>
           </Row>
 
-          <div className="cardTable">
-            <table className="table table-striped">
-              <thead className="border-top-0">
-                <tr>
-                  <th>Nama</th>
-                  <th>Alamat</th>
-                  <th>Opsi</th>
-                </tr>
-              </thead>
-              <tbody>
-              {this.state.items.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.nama}</td>
-                  <td>{item.alamat}</td>
-                  <td>
-                    {/* <Link to="/EditDataSupplier">
-                      <a href="#" class="btn btn-warning edit">
-                        <img src={icoEdit} alt="edit" className="icoOption" />
-                      </a>
-                    </Link> */}
-                    <button
-                        href=""
-                        className="btn btn-warning edit"
-                        onClick={this.onEdit.bind(
-                            this,
-                            item.id
-                        )}
-                    >
-                      <img src={icoEdit} alt="edit" className="icoOption" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              </tbody>
-            </table>
-
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a href="" class="arrowPrev">
-                    <img src={arrowPrev} alt="prev" className="icoPage" />
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    1
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a href="" class="arrowNext">
-                    <img src={arrowNext} alt="next" className="icoPage" />
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+          {items && this.renderSupplierList()}
+        </div> 
       </Container>
     );
   }

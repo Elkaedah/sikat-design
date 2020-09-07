@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const getList = () => {
+export const getList = (pageNumber = 1) => {
     return axios
-        .get('http://localhost:8000/api/supplier', {
+        .get('http://localhost:8000/api/supplier?page='+ pageNumber, {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(res => {
