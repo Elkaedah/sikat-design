@@ -7,53 +7,54 @@ import arrowPrev from "./img/logistik/arrow-prev.svg";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
-import axios from 'axios'
+import axios from "axios";
 
 class DataSupplier extends React.Component {
   constructor() {
-      super()
-      this.state = {
-          id: '',
-          nama: '',
-          alamat: '',
-          items: null
-      }
+    super();
+    this.state = {
+      id: "",
+      nama: "",
+      alamat: "",
+      items: null,
+    };
   }
 
   componentWillMount() {
-      this.getList()
+    this.getList();
   }
 
-  async getList(pageNumber = 1){
-      const url = 'http://localhost:8000/api/supplier?page=' + pageNumber;
-      const response = await axios.get(url);
-          this.setState(
-            {
-              items: response.data
-            },
-            () => {
-              console.log(this.state.items)
-            });
+  async getList(pageNumber = 1) {
+    const url = "http://localhost:8000/api/supplier?page=" + pageNumber;
+    const response = await axios.get(url);
+    this.setState(
+      {
+        items: response.data,
+      },
+      () => {
+        console.log(this.state.items);
+      }
+    );
   }
 
   onEdit = (itemid, e) => {
-      e.preventDefault()
+    e.preventDefault();
 
-      var data = [...this.state.items]
-      data.forEach((item, index) => {
-          if (item.id === itemid) {
-              this.setState({
-                  id: item.id,
-                  nama: item.nama,
-                  alamat: item.alamat
-              })
-          }
-      })
-  }
+    var data = [...this.state.items];
+    data.forEach((item, index) => {
+      if (item.id === itemid) {
+        this.setState({
+          id: item.id,
+          nama: item.nama,
+          alamat: item.alamat,
+        });
+      }
+    });
+  };
 
-  renderSupplierList(){
-    const {data, current_page, per_page, total} = this.state.items;
-    return(
+  renderSupplierList() {
+    const { data, current_page, per_page, total } = this.state.items;
+    return (
       <div className="cardTable">
         <table className="table table-striped">
           <thead className="border-top-0">
@@ -64,52 +65,48 @@ class DataSupplier extends React.Component {
             </tr>
           </thead>
           <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
-              <td>{item.nama}</td>
-              <td>{item.alamat}</td>
-              <td>
-                {/* <Link to="/EditDataSupplier">
-                  <a href="#" class="btn btn-warning edit">
-                    <img src={icoEdit} alt="edit" className="icoOption" />
-                  </a>
-                </Link> */}
-                <button
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td>{item.nama}</td>
+                <td>{item.alamat}</td>
+                <td>
+                  <button
                     href=""
                     className="btn btn-warning edit"
-                    onClick={this.onEdit.bind(
-                        this,
-                        item.id
-                    )}
-                >
-                  <img src={icoEdit} alt="edit" className="icoOption" />
-                </button>
-              </td>
-            </tr>
-          ))}
+                    onClick={this.onEdit.bind(this, item.id)}
+                  >
+                    <img src={icoEdit} alt="edit" className="icoOption" />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
 
         <nav aria-label="Page navigation example">
-            <Pagination
-              hideFirstLastPages
-              innerClass="pagination justify-content-center"
-              activePage={current_page}
-              itemsCountPerPage={per_page}
-              totalItemsCount={total}
-              prevPageText={<i className='arrowPref'><img src={arrowPrev} alt="prev" className="icoPage" /></i>}
-              nextPageText={<i className='arrowNext'><img src={arrowNext} alt="next" className="icoPage" /></i>}
-              itemClass="page-item"
-              linkClass="page-link"
-              onChange={(pageNumber) => this.getList(pageNumber)}
-            />
+          <Pagination
+            hideFirstLastPages
+            innerClass="pagination justify-content-center"
+            activePage={current_page}
+            itemsCountPerPage={per_page}
+            totalItemsCount={total}
+            prevPageText={
+              <img src={arrowPrev} alt="prev" className="icoPage" />
+            }
+            nextPageText={
+              <img src={arrowNext} alt="next" className="icoPage" />
+            }
+            itemClass="page-item"
+            linkClass="page-link"
+            onChange={(pageNumber) => this.getList(pageNumber)}
+          />
         </nav>
-      </div> 
-    )
+      </div>
+    );
   }
 
   render() {
-    const {items} = this.state;
+    const { items } = this.state;
     return (
       <Container className="container-fluid">
         <div className="dataSupplier">
@@ -148,7 +145,7 @@ class DataSupplier extends React.Component {
           </Row>
 
           {items && this.renderSupplierList()}
-        </div> 
+        </div>
       </Container>
     );
   }
