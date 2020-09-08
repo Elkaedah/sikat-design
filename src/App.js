@@ -6,6 +6,7 @@ import Chart2 from "./component/chart2";
 import Welcome from "./component/welcome";
 import Sidebar from "./component/sidebar";
 import profile from "./component/img/profile-exam.jpg";
+
 // Logistik
 import Logistik from "./component/logistik";
 import DataLogistik from "./component/dataLogistik";
@@ -15,7 +16,11 @@ import DataSupplier from "./component/dataSupplier";
 import AddDataSupplier from "./component/addDataSupplier";
 import EditDataSupplier from "./component/editDataSupplier";
 
+// User
 import User from "./component/user";
+
+// Laporan
+import Laporan from "./component/laporan";
 
 import { Row, Container, Col, Nav } from "react-bootstrap";
 import {
@@ -94,7 +99,7 @@ const routes = [
   },
   {
     path: "/Laporan",
-    main: () => <h2> Ini Nanti Data Laporan </h2>,
+    main: () => <Laporan />,
     title: () => <div> Laporan </div>,
   },
 ];
