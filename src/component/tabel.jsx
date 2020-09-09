@@ -1,11 +1,14 @@
 import React from "react";
-import {Table} from "react-bootstrap";
+import icoEdit from "./img/icon/IcoEdit.svg";
+import icoDelete from "./img/icon/IcoDelete.svg";
 
+import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default class Tabel extends React.Component{
-render(){ 
-    return(
-        <div className="cardTable">
+export default class Tabel extends React.Component {
+  render() {
+    return (
+      <div className="cardTable">
         <Table striped bordered hover>
           <thead className="border-top-0">
             <tr>
@@ -70,8 +73,8 @@ render(){
               </td>
             </tr>
           </tbody>
-          </Table>
-          </div>
+        </Table>
+      </div>
     );
-}
+  }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style/index.scss";
 import icoSearch from "./img/icon/IcoSearch.svg";
-import icoEdit from "./img/icon/IcoEdit.svg";
+import icoDetail from "./img/icon/IcoDetail.svg";
 import icoDelete from "./img/icon/IcoDelete.svg";
 import arrowNext from "./img/icon/arrow-next.svg";
 import arrowPrev from "./img/icon/arrow-prev.svg";
@@ -40,11 +40,11 @@ class Laporan extends React.Component {
               </form>
             </Col>
             <Col className="col-md-6">
-              {/* <Link to="/AddDataLaporan"> */}
-              <a href="" className="btn btn-custom1">
-                Tambah Data
-              </a>
-              {/* </Link> */}
+              <Link to="/AddDataLaporan">
+                <a href="" className="btn btn-custom1">
+                  Tambah Data
+                </a>
+              </Link>
             </Col>
           </Row>
 
@@ -67,8 +67,12 @@ class Laporan extends React.Component {
                   <td>Terverifikasi</td>
                   <td>
                     <Link to="/EditDataLogistik">
-                      <a href="#" class="btn btn-warning edit">
-                        <img src={icoEdit} alt="edit" className="icoOption" />
+                      <a href="#" class="btn btn-primary edit">
+                        <img
+                          src={icoDetail}
+                          alt="detail"
+                          className="icoOptionDetail"
+                        />
                       </a>
                     </Link>
                     <a href="#" class="btn btn-danger delete">
@@ -83,8 +87,12 @@ class Laporan extends React.Component {
                   <td>Terverifikasi</td>
                   <td>
                     <Link to="/EditDataLogistik">
-                      <a href="#" class="btn btn-warning edit">
-                        <img src={icoEdit} alt="edit" className="icoOption" />
+                      <a href="#" class="btn btn-primary edit">
+                        <img
+                          src={icoDetail}
+                          alt="detail"
+                          className="icoOptionDetail"
+                        />
                       </a>
                     </Link>
                     <a href="#" class="btn btn-danger delete">
@@ -99,8 +107,12 @@ class Laporan extends React.Component {
                   <td>Terverifikasi</td>
                   <td>
                     <Link to="/EditDataLogistik">
-                      <a href="#" class="btn btn-warning edit">
-                        <img src={icoEdit} alt="edit" className="icoOption" />
+                      <a href="#" class="btn btn-primary edit">
+                        <img
+                          src={icoDetail}
+                          alt="detail"
+                          className="icoOptionDetail"
+                        />
                       </a>
                     </Link>
                     <a href="#" class="btn btn-danger delete">
