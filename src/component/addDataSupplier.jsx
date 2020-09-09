@@ -10,26 +10,22 @@ class AddDataSupplier extends React.Component {
     this.state = {
       id: "",
       nama: "",
-      alamat: "",
-      items: [],
+      alamat: ""
     };
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.onChangeNama = this.onChangeNama.bind(this);
-    this.onChangeAlamat = this.onChangeAlamat.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  onChangeNama = (event) => {
-    this.setState({
-      nama: event.target.value,
-    });
-  };
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
 
-  onChangeAlamat = (event) => {
     this.setState({
-      alamat: event.target.value,
+      [name]: value
     });
-  };
+  }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -79,8 +75,8 @@ class AddDataSupplier extends React.Component {
                   className="form-control"
                   id="nama"
                   name="nama"
-                  value={this.state.nama || ""}
-                  onChange={this.onChangeNama}
+                  value={this.state.nama}
+                  onChange={this.handleInputChange}
                 />
               </Col>
             </Row>
@@ -94,8 +90,8 @@ class AddDataSupplier extends React.Component {
                   id="alamat"
                   className="form-control"
                   rows="10"
-                  value={this.state.alamat || ""}
-                  onChange={this.onChangeAlamat}
+                  value={this.state.alamat}
+                  onChange={this.handleInputChange}
                 ></textarea>
               </Col>
             </Row>

@@ -5,25 +5,113 @@ import icoEdit from "./img/logistik/IcoEdit.svg";
 import icoDelete from "./img/logistik/IcoDelete.svg";
 import arrowNext from "./img/logistik/arrow-next.svg";
 import arrowPrev from "./img/logistik/arrow-prev.svg";
-
+import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Pagination from "react-js-pagination";
 
 class DataLogistik extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      items: null
+    };
+  }
+
+  componentWillMount() {
+    this.getList();
+  }
+
+  async getList(pageNumber = 1) {
+    const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
+    const response = await axios.get(url);
+    this.setState(
+      {
+        items: response.data,
+      },
+      () => {
+        console.log(this.state.items);
+      }
+    );
+  }
+
+  renderLogistikList() {
+    const { data, current_page, per_page, total } = this.state.items;
+    return (
+      <div className="cardTable">
+        <table className="table table-striped">
+          <thead className="border-top-0">
+            <tr>
+              <th>Nama</th>
+              <th>Kategori</th>
+              <th>Stok</th>
+              <th>Supplier</th>
+              <th>Status</th>
+              <th>Expired</th>
+              <th>Opsi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td>{item.nama_barang}</td>
+                <td>{item.jenis_kategori}</td>
+                <td>{item.stok}</td>
+                <td>{item.nama}</td>
+                <td>{item.status}</td>
+                <td>{item.expired}</td>
+                <td>
+                  <Link to="/EditDataLogistik">
+                    <a href="#" className="btn btn-warning edit">
+                      <img src={icoEdit} alt="edit" className="icoOption" />
+                    </a>
+                  </Link>
+                  <a href="#" className="btn btn-danger delete">
+                    <img src={icoDelete} alt="delete" className="icoOption" />
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+          <Pagination
+            hideFirstLastPages
+            innerClass="pagination justify-content-center"
+            activePage={current_page}
+            itemsCountPerPage={per_page}
+            totalItemsCount={total}
+            prevPageText={
+              <img src={arrowPrev} alt="prev" className="icoPage" />
+            }
+            nextPageText={
+              <img src={arrowNext} alt="next" className="icoPage" />
+            }
+            itemClass="page-item"
+            linkClass="page-link"
+            onChange={(pageNumber) => this.getList(pageNumber)}
+          />
+        </nav>
+      </div>
+    );
+  }
+
   render() {
+    const { items } = this.state;
     return (
       <Container className="container-fluid">
         <div className="dataLogistik">
           <h1 className="dataTitle">Data Logistik</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link to="/Logistik">Logistik</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Data Logistik
               </li>
             </ol>
@@ -48,103 +136,8 @@ class DataLogistik extends React.Component {
             </Col>
           </Row>
 
-          <div className="cardTable">
-            <table className="table table-striped">
-              <thead className="border-top-0">
-                <tr>
-                  <th>Nama</th>
-                  <th>Kategori</th>
-                  <th>Stok</th>
-                  <th>Supplier</th>
-                  <th>Status</th>
-                  <th>Expired</th>
-                  <th>Opsi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Indomie Goreng</td>
-                  <td>Makanan</td>
-                  <td>1530</td>
-                  <td>PT.Bantuan Sosial</td>
-                  <td>Status</td>
-                  <td>29-12-2023</td>
-                  <td>
-                    <Link to="/EditDataLogistik">
-                      <a href="#" class="btn btn-warning edit">
-                        <img src={icoEdit} alt="edit" className="icoOption" />
-                      </a>
-                    </Link>
-                    <a href="#" class="btn btn-danger delete">
-                      <img src={icoDelete} alt="delete" className="icoOption" />
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Indomie Goreng</td>
-                  <td>Makanan</td>
-                  <td>1530</td>
-                  <td>PT.Bantuan Sosial</td>
-                  <td>Status</td>
-                  <td>29-12-2023</td>
-                  <td>
-                    <a href="#" class="btn btn-warning edit">
-                      <img src={icoEdit} alt="edit" className="icoOption" />
-                    </a>
-                    <a href="#" class="btn btn-danger delete">
-                      <img src={icoDelete} alt="delete" className="icoOption" />
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Indomie Goreng</td>
-                  <td>Makanan</td>
-                  <td>1530</td>
-                  <td>PT.Bantuan Sosial</td>
-                  <td>Status</td>
-                  <td>29-12-2023</td>
-                  <td>
-                    <a href="#" class="btn btn-warning edit">
-                      <img src={icoEdit} alt="edit" className="icoOption" />
-                    </a>
-                    <a href="#" class="btn btn-danger delete">
-                      <img src={icoDelete} alt="delete" className="icoOption" />
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          {items && this.renderLogistikList()}
 
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a href="" class="arrowPrev">
-                    <img src={arrowPrev} alt="prev" className="icoPage" />
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    1
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a href="" class="arrowNext">
-                    <img src={arrowNext} alt="next" className="icoPage" />
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
         </div>
       </Container>
     );

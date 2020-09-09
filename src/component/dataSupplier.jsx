@@ -13,10 +13,7 @@ class DataSupplier extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: "",
-      nama: "",
-      alamat: "",
-      items: null,
+      items: null
     };
   }
 
