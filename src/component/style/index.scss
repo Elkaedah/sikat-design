@@ -8,7 +8,6 @@
 @import "./body/welcome";
 @import "./body/profile";
 // styling body
-
 // Logistik
 @import "./body/logistik";
 @import "./body/dataLogistik";
@@ -17,6 +16,8 @@
 @import "./body/dataSupplier";
 @import "./body/addDataSupplier";
 @import "./body/editDataSupplier";
-
 // Laporan
 @import "./body/laporan";
+form {
+    @include character-style($font-family2, bold, 18px, $blackColor);
+}
