@@ -182,7 +182,7 @@ export default class User extends React.Component {
                 Foto
               </Form.Label>
               <Col sm={10}>
-                <Form.File
+                <Form.File 
                   className="position-relative"
                   required
                   name="file"
