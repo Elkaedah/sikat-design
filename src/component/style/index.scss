@@ -8,11 +8,20 @@
 @import "./body/welcome";
 @import "./body/profile";
 // styling body
+
 // Logistik
 @import "./body/logistik";
-@import "./body/dataLogistik.scss";
+@import "./body/dataLogistik";
 @import "./body/addDataLogistik";
-@import "./body/editDataLogistik.scss";
-@import "./body/dataSupplier.scss";
-@import "./body/addDataSupplier.scss";
-@import "./body/editDataSupplier.scss";
+@import "./body/editDataLogistik";
+@import "./body/dataSupplier";
+@import "./body/addDataSupplier";
+@import "./body/editDataSupplier";
+
+// Laporan
+@import "./body/laporan";
+@import "./body/addDataLaporan";
+
+form {
+  @include character-style($font-family2, bold, 18px, $blackColor);
+}

@@ -6,6 +6,7 @@ import Chart2 from "./component/chart2";
 import Welcome from "./component/welcome";
 import Sidebar from "./component/sidebar";
 import profile from "./component/img/profile-exam.jpg";
+
 // Logistik
 import Logistik from "./component/logistik";
 import DataLogistik from "./component/dataLogistik";
@@ -15,7 +16,13 @@ import DataSupplier from "./component/dataSupplier";
 import AddDataSupplier from "./component/addDataSupplier";
 import EditDataSupplier from "./component/editDataSupplier";
 
+// User
+import Tabel from "./component/tabel";
 import User from "./component/user";
+
+// Laporan
+import Laporan from "./component/laporan";
+import AddDataLaporan from "./component/addDataLaporan";
 
 import { Row, Container, Col, Nav } from "react-bootstrap";
 import {
@@ -49,8 +56,8 @@ const routes = [
     title: () => <div> Penanggulangan Bencana </div>,
   },
   {
-    path: "/DataSupplier",
-    main: () => <DataSupplier />,
+    path: "/DataLogistik",
+    main: () => <DataLogistik />,
     title: () => <div> Logistik </div>,
   },
   {
@@ -60,31 +67,27 @@ const routes = [
   },
   {
     path: "/EditDataLogistik",
-
     main: () => <EditDataLogistik />,
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/EditDataSupplier",
-
-    main: () => <EditDataSupplier />,
+    path: "/DataSupplier",
+    main: () => <DataSupplier />,
     title: () => <div> Logistik </div>,
   },
   {
     path: "/AddDataSupplier",
-
     main: () => <AddDataSupplier />,
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/DataLogistik",
-
-    main: () => <DataLogistik />,
+    path: "/EditDataSupplier",
+    main: () => <EditDataSupplier />,
     title: () => <div> Logistik </div>,
   },
   {
     path: "/Pegawai",
-    main: () => <User />,
+    main: () => <Tabel />,
     title: () => <div> User </div>,
   },
   {
@@ -94,9 +97,19 @@ const routes = [
   },
   {
     path: "/Laporan",
-    main: () => <h2> Ini Nanti Data Laporan </h2>,
+    main: () => <Laporan />,
     title: () => <div> Laporan </div>,
   },
+  {
+    path: "/AddDataLaporan",
+    main: () => <AddDataLaporan />,
+    title: () => <div> Laporan </div>,
+  },
+  //   {
+  //     path: "/EditDataLaporan",
+  //     main: () => <EditDataLaporan />,
+  //     title: () => <div> Laporan </div>,
+  //   },
 ];
 
 export default function App() {

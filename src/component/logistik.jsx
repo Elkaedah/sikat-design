@@ -2,7 +2,7 @@ import React from "react";
 import "./style/index.scss";
 import logistik from "./img/logistik/Logistik.svg";
 import supplier from "./img/logistik/Supplier.svg";
-import arrow from "./img/logistik/ArrowNext.svg";
+import arrow from "./img/icon/ArrowNext.svg";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";

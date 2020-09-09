@@ -1,9 +1,10 @@
 import React from "react";
 import "./style/index.scss";
-import icoSearch from "./img/logistik/IcoSearch.svg";
-import icoEdit from "./img/logistik/IcoEdit.svg";
-import arrowNext from "./img/logistik/arrow-next.svg";
-import arrowPrev from "./img/logistik/arrow-prev.svg";
+import icoSearch from "./img/icon/IcoSearch.svg";
+import icoEdit from "./img/icon/IcoEdit.svg";
+import arrowNext from "./img/icon/arrow-next.svg";
+import arrowPrev from "./img/icon/arrow-prev.svg";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
@@ -121,7 +122,7 @@ class DataSupplier extends React.Component {
               </li>
             </ol>
           </nav>
-          <Row className="">
+          <Row>
             <Col className="col-md-6">
               <form action="#" method="post">
                 <input

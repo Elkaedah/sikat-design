@@ -116,7 +116,7 @@ class DataLogistik extends React.Component {
               </li>
             </ol>
           </nav>
-          <Row className="">
+          <Row>
             <Col className="col-md-6">
               <form action="#" method="post">
                 <input
