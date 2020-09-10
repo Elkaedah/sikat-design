@@ -1,10 +1,10 @@
 import React from "react";
 import "./style/index.scss";
-import icoSearch from "./img/logistik/IcoSearch.svg";
-import icoEdit from "./img/logistik/IcoEdit.svg";
-import icoDelete from "./img/logistik/IcoDelete.svg";
-import arrowNext from "./img/logistik/arrow-next.svg";
-import arrowPrev from "./img/logistik/arrow-prev.svg";
+import icoSearch from "./img/icon/IcoSearch.svg";
+import icoEdit from "./img/icon/IcoEdit.svg";
+import icoDelete from "./img/icon/IcoDelete.svg";
+import arrowNext from "./img/icon/arrow-next.svg";
+import arrowPrev from "./img/icon/arrow-prev.svg";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ class DataLogistik extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: null
+      items: null,
     };
   }
 
@@ -137,7 +137,6 @@ class DataLogistik extends React.Component {
           </Row>
 
           {items && this.renderLogistikList()}
-
         </div>
       </Container>
     );

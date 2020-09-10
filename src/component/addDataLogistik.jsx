@@ -1,7 +1,7 @@
 import React from "react";
 import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 
 class AddDataLogistik extends React.Component {
@@ -16,7 +16,7 @@ class AddDataLogistik extends React.Component {
       status: "",
       expired: "",
       suppliers: [],
-      categories: []
+      categories: [],
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -29,26 +29,26 @@ class AddDataLogistik extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:8000/api/logistik', 
-        { 
-          id_kategori: this.state.id_kategori,
-          nama_barang: this.state.nama_barang,
-          stok: this.state.stok,
-          id_supplier: this.state.id_supplier,
-          status: this.state.status,
-          expired: this.state.expired
-        })
-        .then(response => {
-            console.log(response);
-        });
-    
+    axios
+      .post("http://localhost:8000/api/logistik", {
+        id_kategori: this.state.id_kategori,
+        nama_barang: this.state.nama_barang,
+        stok: this.state.stok,
+        id_supplier: this.state.id_supplier,
+        status: this.state.status,
+        expired: this.state.expired,
+      })
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/DataLogistik");
+      });
   };
 
   componentDidMount() {
@@ -111,28 +111,14 @@ class AddDataLogistik extends React.Component {
                 <h3>Nama</h3>
               </Col>
               <Col className="col-md-9">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   className="form-control"
                   id="nama_barang"
                   name="nama_barang"
-                  value={this.state.nama_barang} 
-                  onChange={this.handleInputChange} />
-              </Col>
-            </Row>
-            <Row className="kategori">
-              <Col className="col-md-2">
-                <h3>Kategori</h3>
-              </Col>
-              <Col className="col-md-9">
-                <select name="id_kategori" id="id_kategori" value={this.state.id_kategori} onChange={this.handleInputChange} className="form-control">
-                  <option value="#"> - Pilih Kategori -</option>
-                  {
-                    categories.map((item, kategori) => (
-                      <option key={kategori} value={item.id}>{item.jenis_kategori}</option>
-                    )
-                  )}
-                </select>
+                  value={this.state.nama_barang}
+                  onChange={this.handleInputChange}
+                />
               </Col>
             </Row>
 
@@ -141,27 +127,55 @@ class AddDataLogistik extends React.Component {
                 <h3>Supplier</h3>
               </Col>
               <Col className="col-md-9">
-                <select name="id_supplier" id="id_supplier" value={this.state.id_supplier} onChange={this.handleInputChange} className="form-control">
+                <select
+                  name="id_supplier"
+                  id="id_supplier"
+                  value={this.state.id_supplier}
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                >
                   <option value="#"> - Pilih Supplier -</option>
-                  {
-                    suppliers.map((item, supplier) => (
-                      <option key={supplier} value={item.id}>{item.nama}</option>
-                    )
-                  )}
+                  {suppliers.map((item, supplier) => (
+                    <option key={supplier} value={item.id}>
+                      {item.nama}
+                    </option>
+                  ))}
                 </select>
               </Col>
             </Row>
 
-            <Row className="status">
+            <Row className="kategori">
               <Col className="col-md-2">
-                <h3>Kondisi</h3>
+                <h3>Kategori</h3>
               </Col>
-              <Col className="col-md-9">
-                <select name="status" id="status" value={this.state.status} onChange={this.handleInputChange} className="form-control">
-                  <option value="#"> - Pilih Kondisi -</option>
-                  <option value="baik"> Baik </option>
-                  <option value="rusak"> Rusak </option>
+              <Col className="col-md-3">
+                <select
+                  name="id_kategori"
+                  id="id_kategori"
+                  value={this.state.id_kategori}
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                >
+                  <option value="#"> - Pilih Kategori -</option>
+                  {categories.map((item, kategori) => (
+                    <option key={kategori} value={item.id}>
+                      {item.jenis_kategori}
+                    </option>
+                  ))}
                 </select>
+              </Col>
+              <Col className="col-md-1 offset-1">
+                <h3>Stok</h3>
+              </Col>
+              <Col className="col-md-4">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="stok"
+                  name="stok"
+                  value={this.state.stok}
+                  onChange={this.handleInputChange}
+                />
               </Col>
             </Row>
 
@@ -170,25 +184,30 @@ class AddDataLogistik extends React.Component {
                 <h3>Expired</h3>
               </Col>
               <Col className="col-md-3">
-                <input 
-                  type="date" 
-                  className="form-control" 
-                  name="expired" 
+                <input
+                  type="date"
+                  className="form-control"
+                  name="expired"
                   id="expired"
-                  value={this.state.expired} 
-                  onChange={this.handleInputChange} />
+                  value={this.state.expired}
+                  onChange={this.handleInputChange}
+                />
               </Col>
-              <Col className="col-md-1 offset-1">
-                <h3>Stok</h3>
+              <Col className="col-md-2 kondisi">
+                <h3>Kondisi</h3>
               </Col>
               <Col className="col-md-4">
-                <input 
-                  type="text" 
+                <select
+                  name="status"
+                  id="status"
+                  value={this.state.status}
+                  onChange={this.handleInputChange}
                   className="form-control"
-                  id="stok"
-                  name="stok"
-                  value={this.state.stok} 
-                  onChange={this.handleInputChange} />
+                >
+                  <option value="#"> - Pilih Kondisi Barang -</option>
+                  <option value="baik"> Baik </option>
+                  <option value="rusak"> Rusak </option>
+                </select>
               </Col>
             </Row>
 
@@ -218,4 +237,4 @@ class AddDataLogistik extends React.Component {
   }
 }
 
-export default AddDataLogistik;
+export default withRouter(AddDataLogistik);

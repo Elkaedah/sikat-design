@@ -45,7 +45,7 @@ class AddDataLaporan extends React.Component {
               <Col className="col-md-4">
                 <input type="date" className="form-control" name="" id="" />
               </Col>
-              <Col className="col-md-1 offset-1">
+              <Col className="col-md-1 offset-1 jam">
                 <p>Jam</p>
               </Col>
               <Col className="col-md-4">
@@ -74,7 +74,7 @@ class AddDataLaporan extends React.Component {
               <Col className="col-md-3">
                 <input type="text" className="form-control" name="" id="" />
               </Col>
-              <Col className="col-md-3 offset-1">
+              <Col className="col-md-3 offset-1 jmlh-meninggal">
                 <p>Jumlah Meninggal</p>
               </Col>
               <Col className="col-md-3">
