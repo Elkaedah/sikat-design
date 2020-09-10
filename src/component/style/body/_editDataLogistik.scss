@@ -32,14 +32,18 @@
   .nama {
     margin-bottom: 20px;
   }
-  .kategori {
+  .supplier {
     margin-bottom: 20px;
   }
-  .supplier {
+  .kategori {
     margin-bottom: 20px;
   }
   .expired {
     margin-bottom: 50px;
+  }
+
+  .kondisi h3 {
+    text-align: right;
   }
 
   .submit {
@@ -52,16 +56,4 @@
     font-weight: bold;
     font-size: 20px;
   }
-
-  // .reset {
-  //   margin-bottom: 30px;
-  // }
-  // .reset a {
-  //   border: none;
-  //   border-radius: 10px;
-  //   color: $whiteColor;
-  //   letter-spacing: 1px;
-  //   font-weight: bold;
-  //   font-size: 20px;
-  // }
 }

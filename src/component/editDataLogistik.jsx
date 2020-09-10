@@ -35,18 +35,6 @@ class EditDataLogistik extends React.Component {
                 <input type="text" className="form-control" />
               </Col>
             </Row>
-            <Row className="kategori">
-              <Col className="col-md-2">
-                <h3>Kategori</h3>
-              </Col>
-              <Col className="col-md-9">
-                <select name="" id="" className="form-control">
-                  <option value="#"> - Pilih Kategori -</option>
-                  <option value="a">a</option>
-                  <option value="f">f</option>
-                </select>
-              </Col>
-            </Row>
             <Row className="supplier">
               <Col className="col-md-2">
                 <h3>Supplier</h3>
@@ -59,6 +47,24 @@ class EditDataLogistik extends React.Component {
                 </select>
               </Col>
             </Row>
+            <Row className="kategori">
+              <Col className="col-md-2">
+                <h3>Kategori</h3>
+              </Col>
+              <Col className="col-md-3">
+                <select name="" id="" className="form-control">
+                  <option value="#"> - Pilih Kategori -</option>
+                  <option value="a">a</option>
+                  <option value="f">f</option>
+                </select>
+              </Col>
+              <Col className="col-md-1 offset-1">
+                <h3>Stok</h3>
+              </Col>
+              <Col className="col-md-4">
+                <input type="text" className="form-control" />
+              </Col>
+            </Row>
 
             <Row className="expired">
               <Col className="col-md-2">
@@ -67,11 +73,15 @@ class EditDataLogistik extends React.Component {
               <Col className="col-md-3">
                 <input type="date" className="form-control" name="" id="" />
               </Col>
-              <Col className="col-md-1 offset-1">
-                <h3>Stok</h3>
+              <Col className="col-md-2 kondisi">
+                <h3>Kondisi</h3>
               </Col>
               <Col className="col-md-4">
-                <input type="text" className="form-control" />
+                <select name="status" id="status" className="form-control">
+                  <option value="#"> - Pilih Kondisi Barang -</option>
+                  <option value="a">Baik</option>
+                  <option value="f">Rusak</option>
+                </select>
               </Col>
             </Row>
 
