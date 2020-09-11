@@ -23,6 +23,8 @@ import User from "./component/user";
 // Laporan
 import Laporan from "./component/laporan";
 import AddDataLaporan from "./component/addDataLaporan";
+import DetailDataLaporan from "./component/detailDataLaporan";
+import EditDataLaporan from "./component/editDataLaporan";
 
 import { Row, Container, Col, Nav } from "react-bootstrap";
 import {
@@ -105,11 +107,16 @@ const routes = [
     main: () => <AddDataLaporan />,
     title: () => <div> Laporan </div>,
   },
-  //   {
-  //     path: "/EditDataLaporan",
-  //     main: () => <EditDataLaporan />,
-  //     title: () => <div> Laporan </div>,
-  //   },
+  {
+    path: "/DetailDataLaporan",
+    main: () => <DetailDataLaporan />,
+    title: () => <div> Laporan </div>,
+  },
+  {
+    path: "/EditDataLaporan",
+    main: () => <EditDataLaporan />,
+    title: () => <div> Laporan </div>,
+  },
 ];
 
 export default function App() {

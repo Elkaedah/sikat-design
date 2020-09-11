@@ -1,15 +1,17 @@
 import React from "react";
 import "./style/index.scss";
+import img_bencana from "./img/img_bencana.jpg";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-class AddDataLaporan extends React.Component {
+class DetailDataLaporan extends React.Component {
   render() {
     return (
       <Container className="container-fluid">
-        <div className="addDataLaporan">
-          <h1 className="dataTitle">Tambah Data Laporan</h1>
+        <div className="detailDataLaporan">
+          <h1 className="dataTitle">Laporan ...</h1>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
@@ -19,7 +21,7 @@ class AddDataLaporan extends React.Component {
                 <Link to="/Laporan">Data Laporan</Link>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                Tambah Data Laporan
+                Detail Data Laporan
               </li>
             </ol>
           </nav>
@@ -30,26 +32,28 @@ class AddDataLaporan extends React.Component {
                 <p>Bencana</p>
               </Col>
               <Col className="col-md-10">
-                <select name="" id="" className="form-control">
-                  <option value="#"> - Pilih Bencana -</option>
-                  <option value="a">Tanah Longsor</option>
-                  <option value="f">Banjir</option>
-                </select>
+                <input
+                  type="text"
+                  className="form-control"
+                  name=""
+                  id=""
+                  value="Tanah Longsor ..."
+                />
               </Col>
             </Row>
 
-            <Row className="tanggal">
+            <Row className="waktu">
               <Col className="col-md-2">
-                <p>Tanggal</p>
+                <p>Waktu</p>
               </Col>
-              <Col className="col-md-4">
-                <input type="date" className="form-control" name="" id="" />
-              </Col>
-              <Col className="col-md-1 offset-1 jam">
-                <p>Jam</p>
-              </Col>
-              <Col className="col-md-4">
-                <input type="text" className="form-control" name="" id="" />
+              <Col className="col-md-10">
+                <input
+                  type="text"
+                  className="form-control"
+                  name=""
+                  id=""
+                  value="09.00 - 29 Mei 2021"
+                />
               </Col>
             </Row>
 
@@ -72,13 +76,25 @@ class AddDataLaporan extends React.Component {
                 <p>Jumlah Korban</p>
               </Col>
               <Col className="col-md-3">
-                <input type="text" className="form-control" name="" id="" />
+                <input
+                  type="text"
+                  className="form-control"
+                  name=""
+                  id=""
+                  value="40"
+                />
               </Col>
               <Col className="col-md-3 jmlh-meninggal">
                 <p>Jumlah Meninggal</p>
               </Col>
               <Col className="col-md-4">
-                <input type="text" className="form-control" name="" id="" />
+                <input
+                  type="text"
+                  className="form-control"
+                  name=""
+                  id=""
+                  value="5"
+                />
               </Col>
             </Row>
 
@@ -101,26 +117,32 @@ class AddDataLaporan extends React.Component {
                 <p>Foto</p>
               </Col>
               <Col className="col-md-10">
-                <input type="file" name="foto" id="foto" />
-              </Col>
-            </Row>
-
-            <Row className="submit">
-              <Col className="col-md-2"></Col>
-              <Col className="col-md-10">
-                <input
-                  type="submit"
-                  value="Tambah Data"
-                  className="form-control"
+                <img
+                  src={img_bencana}
+                  alt="foto-bencana"
+                  className="foto-bencana"
+                />
+                <img
+                  src={img_bencana}
+                  alt="foto-bencana"
+                  className="foto-bencana"
+                />
+                <img
+                  src={img_bencana}
+                  alt="foto-bencana"
+                  className="foto-bencana"
                 />
               </Col>
             </Row>
-            <Row className="reset">
+
+            <Row className="edit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-10">
-                <a href="" className="form-control btn btn-danger btn-reset">
-                  Reset
-                </a>
+                <Link to="/EditDataLaporan">
+                  <a href="" className="form-control btn btn-edit">
+                    Edit Data
+                  </a>
+                </Link>
               </Col>
             </Row>
           </form>
@@ -130,4 +152,4 @@ class AddDataLaporan extends React.Component {
   }
 }
 
-export default AddDataLaporan;
+export default DetailDataLaporan;

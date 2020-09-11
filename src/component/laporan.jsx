@@ -66,7 +66,7 @@ class Laporan extends React.Component {
                   <td>Terkonfirmasi</td>
                   <td>Terverifikasi</td>
                   <td>
-                    <Link to="/EditDataLogistik">
+                    <Link to="/DetailDataLaporan">
                       <a href="#" class="btn btn-primary edit">
                         <img
                           src={icoDetail}
@@ -86,7 +86,7 @@ class Laporan extends React.Component {
                   <td>Terkonfirmasi</td>
                   <td>Terverifikasi</td>
                   <td>
-                    <Link to="/EditDataLogistik">
+                    <Link to="/DetailDataLaporan">
                       <a href="#" class="btn btn-primary edit">
                         <img
                           src={icoDetail}
@@ -106,7 +106,7 @@ class Laporan extends React.Component {
                   <td>Terkonfirmasi</td>
                   <td>Terverifikasi</td>
                   <td>
-                    <Link to="/EditDataLogistik">
+                    <Link to="/DetailDataLaporan">
                       <a href="#" class="btn btn-primary edit">
                         <img
                           src={icoDetail}

@@ -4,11 +4,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-class AddDataLaporan extends React.Component {
+class EditDataLaporan extends React.Component {
   render() {
     return (
       <Container className="container-fluid">
-        <div className="addDataLaporan">
+        <div className="editDataLaporan">
           <h1 className="dataTitle">Tambah Data Laporan</h1>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -19,7 +19,7 @@ class AddDataLaporan extends React.Component {
                 <Link to="/Laporan">Data Laporan</Link>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                Tambah Data Laporan
+                Edit Data Laporan
               </li>
             </ol>
           </nav>
@@ -49,7 +49,13 @@ class AddDataLaporan extends React.Component {
                 <p>Jam</p>
               </Col>
               <Col className="col-md-4">
-                <input type="text" className="form-control" name="" id="" />
+                <input
+                  type="text"
+                  className="form-control"
+                  name=""
+                  id=""
+                  value=""
+                />
               </Col>
             </Row>
 
@@ -72,13 +78,25 @@ class AddDataLaporan extends React.Component {
                 <p>Jumlah Korban</p>
               </Col>
               <Col className="col-md-3">
-                <input type="text" className="form-control" name="" id="" />
+                <input
+                  type="text"
+                  className="form-control"
+                  name=""
+                  id=""
+                  value=""
+                />
               </Col>
               <Col className="col-md-3 jmlh-meninggal">
                 <p>Jumlah Meninggal</p>
               </Col>
               <Col className="col-md-4">
-                <input type="text" className="form-control" name="" id="" />
+                <input
+                  type="text"
+                  className="form-control"
+                  name=""
+                  id=""
+                  value=""
+                />
               </Col>
             </Row>
 
@@ -110,17 +128,9 @@ class AddDataLaporan extends React.Component {
               <Col className="col-md-10">
                 <input
                   type="submit"
-                  value="Tambah Data"
+                  value="Ubah Data"
                   className="form-control"
                 />
-              </Col>
-            </Row>
-            <Row className="reset">
-              <Col className="col-md-2"></Col>
-              <Col className="col-md-10">
-                <a href="" className="form-control btn btn-danger btn-reset">
-                  Reset
-                </a>
               </Col>
             </Row>
           </form>
@@ -130,4 +140,4 @@ class AddDataLaporan extends React.Component {
   }
 }
 
-export default AddDataLaporan;
+export default EditDataLaporan;

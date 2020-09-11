@@ -1,4 +1,4 @@
-.addDataLaporan {
+.detailDataLaporan {
   margin-top: 20px;
 
   .dataTitle {
@@ -36,10 +36,17 @@
     border-radius: 10px;
   }
 
+  .foto-bencana {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-right: 15px;
+  }
+
   .bencana {
     margin-bottom: 15px;
   }
-  .tanggal {
+  .waktu {
     margin-bottom: 15px;
   }
   .kalkulasi {
@@ -62,24 +69,13 @@
     text-align: right;
   }
 
-  .submit {
+  .edit {
     margin-bottom: 20px;
   }
-  .submit input {
+  .btn-edit {
     background: linear-gradient(to left, $primaryColor, $fiveColor);
     color: $whiteColor;
-    letter-spacing: 1px;
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  .reset {
-    margin-bottom: 30px;
-  }
-  .reset a {
-    border: none;
     border-radius: 10px;
-    color: $whiteColor;
     letter-spacing: 1px;
     font-weight: bold;
     font-size: 20px;

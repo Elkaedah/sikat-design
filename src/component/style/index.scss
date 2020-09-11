@@ -21,6 +21,8 @@
 // Laporan
 @import "./body/laporan";
 @import "./body/addDataLaporan";
+@import "./body/detailDataLaporan";
+@import "./body/editDataLaporan";
 
 form {
   @include character-style($font-family2, bold, 18px, $blackColor);
