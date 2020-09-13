@@ -1,80 +1,54 @@
 import React from "react";
-import icoEdit from "./img/icon/IcoEdit.svg";
-import icoDelete from "./img/icon/IcoDelete.svg";
+// import icoEdit from "./img/icon/IcoEdit.svg";
+// import icoDelete from "./img/icon/IcoDelete.svg";
 
-import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Table } from "react-bootstrap";
+// import { Link } from "react-router-dom";
 
 export default class Tabel extends React.Component {
+  constructor(props) {
+    super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
+    this.state = { //state is by default an object
+       students: [
+          { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
+          { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
+          { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
+          { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
+       ]
+    }
+ }
+
+
+  renderTableData() {
+    return this.state.students.map((student, index) => {
+       const { id, name, age, email } = student //destructuring
+       return (
+          <tr key={id}>
+             <td>{id}</td>
+             <td>{name}</td>
+             <td>{age}</td>
+             <td>{email}</td>
+          </tr>
+       )
+    })
+ }
+ renderTableHeader() {
+  let header = Object.keys(this.state.students[0])
+  return header.map((key, index) => {
+     return <th key={index}>{key.toUpperCase()}</th>
+  })
+}
   render() {
     return (
-      <div className="cardTable">
-        <Table striped bordered hover>
-          <thead className="border-top-0">
-            <tr>
-              <th>Nama</th>
-              <th>Kategori</th>
-              <th>Stok</th>
-              <th>Supplier</th>
-              <th>Status</th>
-              <th>Expired</th>
-              <th>Opsi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Indomie Goreng</td>
-              <td>Makanan</td>
-              <td>1530</td>
-              <td>PT.Bantuan Sosial</td>
-              <td>Status</td>
-              <td>29-12-2023</td>
-              <td>
-                <Link to="/EditDataLogistik">
-                  <a href="#" class="btn btn-warning edit">
-                    <img src={icoEdit} alt="edit" className="icoOption" />
-                  </a>
-                </Link>
-                <a href="#" class="btn btn-danger delete">
-                  <img src={icoDelete} alt="delete" className="icoOption" />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Indomie Goreng</td>
-              <td>Makanan</td>
-              <td>1530</td>
-              <td>PT.Bantuan Sosial</td>
-              <td>Status</td>
-              <td>29-12-2023</td>
-              <td>
-                <a href="#" class="btn btn-warning edit">
-                  <img src={icoEdit} alt="edit" className="icoOption" />
-                </a>
-                <a href="#" class="btn btn-danger delete">
-                  <img src={icoDelete} alt="delete" className="icoOption" />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Indomie Goreng</td>
-              <td>Makanan</td>
-              <td>1530</td>
-              <td>PT.Bantuan Sosial</td>
-              <td>Status</td>
-              <td>29-12-2023</td>
-              <td>
-                <a href="#" class="btn btn-warning edit">
-                  <img src={icoEdit} alt="edit" className="icoOption" />
-                </a>
-                <a href="#" class="btn btn-danger delete">
-                  <img src={icoDelete} alt="delete" className="icoOption" />
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+      <div>
+         <h1 id='title'>React Dynamic Table</h1>
+         <table id='students'>
+            <tbody>
+               <tr>{this.renderTableHeader()}</tr>
+               {this.renderTableData()}
+            </tbody>
+         </table>
       </div>
-    );
+   )
   }
 }
