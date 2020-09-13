@@ -24,7 +24,11 @@ class Tabel extends React.Component {
     const response = await axios.get(url);
     console.log(response.data);
     // console.log(Halaman())
-    this.setState(
+    this.setState({
+      Post: response.data.map((data, index) => (
+        <th key={index}>{data.name}</th>
+      ))
+    },
     {
       items :response.data
     },  
