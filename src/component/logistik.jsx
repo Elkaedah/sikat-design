@@ -28,7 +28,7 @@ class Logistik extends React.Component {
               <div className="box-card">
                 <img className="imgCard" src={logistik} alt="Logistik" />
                 <h2 className="boxTitle">KELOLA DATA LOGISTIK</h2>
-                <Link to="/DataLogistik">
+                <Link to="/Logistik/DataLogistik">
                   <a href="" className="btn btn-block btn-custom1">
                     Lebih Lanjut{" "}
                     <img src={arrow} alt="btn" className="IcoNext" />
@@ -40,7 +40,7 @@ class Logistik extends React.Component {
               <div className="box-card">
                 <img className="imgCard" src={supplier} alt="Supplier" />
                 <h2 className="boxTitle">KELOLA DATA SUPPLIER</h2>
-                <Link to="/DataSupplier">
+                <Link to="/Logistik/DataSupplier">
                   <a href="" className="btn btn-block btn-custom1">
                     Lebih Lanjut{" "}
                     <img src={arrow} alt="btn" className="IcoNext" />

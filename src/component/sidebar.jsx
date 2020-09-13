@@ -3,7 +3,7 @@ import "./style/index.scss";
 import foto from "./img/Asset 8.svg";
 import Foto1 from "./img/Dashboard1.svg";
 import Foto2 from "./img/Dashboard.svg";
-import { BrowserRouter as Router, useRouteMatch, Link } from "react-router-dom";
+import { withRouter, useRouteMatch, Link } from "react-router-dom";
 // import routes from "./js/routes.js";
 
 function LinkInto({ label, to, activeOnlyWhenExact }) {
@@ -22,8 +22,9 @@ function LinkInto({ label, to, activeOnlyWhenExact }) {
   );
 }
 
-export default class Sidebar extends React.Component {
+ class Sidebar extends React.Component {
   render() {
+    const { match } = this.props;
     return (
       <div className="sidebar text-nowrap ">
         <div className="brand-icon">
@@ -58,3 +59,5 @@ export default class Sidebar extends React.Component {
     );
   }
 }
+
+export default withRouter(Sidebar);
