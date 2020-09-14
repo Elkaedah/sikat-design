@@ -14,9 +14,34 @@ class DataSupplier extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: null
+      q: "",
+      items: null,
     };
+
+    this.onKeyPress = this.onKeyPress.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleInputChange(event) {
+    this.setState({
+      q: event.target.value,
+    });
+  }
+
+  onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      const url = "http://localhost:8000/api/supplier/search";
+      const response = axios.post(url, null, { params: this.state.q });
+      this.setState(
+        {
+          items: response.data,
+        },
+        () => {
+          console.log(response);
+        }
+      );
+    }
+  };
 
   componentWillMount() {
     this.getList();
@@ -110,28 +135,31 @@ class DataSupplier extends React.Component {
         <div className="dataSupplier">
           <h1 className="dataTitle">Data Supplier</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link to="/Logistik">Logistik</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Data Supplier
               </li>
             </ol>
           </nav>
           <Row>
             <Col className="col-md-6">
-              <form action="#" method="post">
-                <input
-                  type="text"
-                  className="form-control search"
-                  placeholder="Cari..."
-                />
-                <img src={icoSearch} alt="search" className="icoSearch" />
-              </form>
+              <input
+                type="text"
+                className="form-control search"
+                placeholder="Cari..."
+                id="q"
+                name="q"
+                value={this.state.q}
+                onChange={this.handleInputChange}
+                onKeyPress={this.onKeyPress}
+              />
+              <img src={icoSearch} alt="search" className="icoSearch" />
             </Col>
             <Col className="col-md-6">
               <Link to="/AddDataSupplier">

@@ -10,7 +10,7 @@ class AddDataSupplier extends React.Component {
     this.state = {
       id: "",
       nama: "",
-      alamat: ""
+      alamat: "",
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,23 +23,22 @@ class AddDataSupplier extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:8000/api/supplier', 
-        { 
-          nama: this.state.nama,
-          alamat: this.state.alamat
-        })
-        .then(response => {
-            console.log(response);
-            this.props.history.push("/DataSupplier");
-        });
-    
+    axios
+      .post("http://localhost:8000/api/supplier", {
+        nama: this.state.nama,
+        alamat: this.state.alamat,
+      })
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/DataSupplier");
+      });
   };
 
   render() {
