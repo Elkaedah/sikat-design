@@ -33,7 +33,7 @@ class EditDataLogistik extends React.Component {
     });
   }
 
-  onSubmit = (e) => {
+  onUpdate = (e) => {
     e.preventDefault();
 
     axios
@@ -104,7 +104,7 @@ class EditDataLogistik extends React.Component {
             </ol>
           </nav>
 
-          <form onChange={this.onChange} method="post">
+          <form onUpdate={this.onUpdate} method="post">
           <Row className="nama">
               <Col className="col-md-2">
                 <h3>Nama Barang</h3>
@@ -215,7 +215,7 @@ class EditDataLogistik extends React.Component {
               <Col className="col-md-9">
               <input
                   type="submit"
-                  onClick={this.onChange.bind(this)}
+                  onClick={this.onUpdate.bind(this)}
                   value="Ubah Data"
                   className="form-control"
                 />
