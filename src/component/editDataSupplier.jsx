@@ -2,8 +2,38 @@ import React from "react";
 import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class EditDataSupplier extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      nama: "",
+      alamat: "",
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8000/api/supplier", {
+        nama: this.state.nama,
+        alamat: this.state.alamat,
+      })
+  };
   render() {
     return (
       <Container className="container-fluid">
@@ -26,8 +56,8 @@ class EditDataSupplier extends React.Component {
             </ol>
           </nav>
 
-          <form action="#" method="post">
-            <Row className="nama">
+          <form onChange={this.onChange} method="post">
+          <Row className="nama">
               <Col className="col-md-2">
                 <h3>Nama</h3>
               </Col>
@@ -35,7 +65,10 @@ class EditDataSupplier extends React.Component {
                 <input
                   type="text"
                   className="form-control"
-                  value="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+                  id="nama"
+                  name="nama"
+                  value={this.state.nama}
+                  onChange={this.handleInputChange}
                 />
               </Col>
             </Row>
@@ -49,18 +82,20 @@ class EditDataSupplier extends React.Component {
                   id="alamat"
                   className="form-control"
                   rows="10"
+                  value={this.state.alamat}
+                  onChange={this.handleInputChange}
                 >
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 </textarea>
               </Col>
             </Row>
             <Row className="submit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-                <input
+              <input
                   type="submit"
+                  onClick={this.onChange.bind(this)}
                   value="Ubah Data"
-                  className="form-control submit"
+                  className="form-control"
                 />
               </Col>
             </Row>
