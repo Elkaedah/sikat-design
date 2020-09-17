@@ -97,17 +97,17 @@ class EditDataSupplier extends React.Component {
         <div className="editDataSupplier">
           <h1 className="dataTitle">Ubah Data ...</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link to="/Logistik">Logistik</Link>
               </li>
-              <li class="breadcrumb-item">
-                <Link to="/DataSupplier">Data Supplier</Link>
+              <li className="breadcrumb-item">
+                <Link to="/Logistik/DataSupplier">Data Supplier</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Ubah Data Supplier
               </li>
             </ol>

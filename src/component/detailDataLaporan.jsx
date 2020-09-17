@@ -13,14 +13,14 @@ class DetailDataLaporan extends React.Component {
         <div className="detailDataLaporan">
           <h1 className="dataTitle">Laporan ...</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link to="/Laporan">Data Laporan</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Detail Data Laporan
               </li>
             </ol>

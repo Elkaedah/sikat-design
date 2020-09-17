@@ -50,10 +50,10 @@
   .reset {
     margin-bottom: 30px;
   }
-  .reset a {
+  .reset button {
+    font-family: $font-family2;
     border: none;
     border-radius: 10px;
-    // background: linear-gradient(to left, $primaryColor, $fiveColor);
     color: $whiteColor;
     letter-spacing: 1px;
     font-weight: bold;

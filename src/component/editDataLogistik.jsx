@@ -47,7 +47,7 @@ class EditDataLogistik extends React.Component {
       })
       .then((response) => {
         console.log(response);
-        this.props.history.push("/DataLogistik");
+        this.props.history.push("/Logistik/DataLogistik");
       });
   };
 
@@ -81,6 +81,7 @@ class EditDataLogistik extends React.Component {
       }
     );
   }
+
   render() {
     const { suppliers, categories } = this.state;
     return (
@@ -96,7 +97,7 @@ class EditDataLogistik extends React.Component {
                 <Link to="/Logistik">Logistik</Link>
               </li>
               <li class="breadcrumb-item">
-                <Link to="/DataLogistik">Data Logistik</Link>
+                <Link to="/Logistik/DataLogistik">Data Logistik</Link>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Ubah Data Logistik
@@ -105,7 +106,7 @@ class EditDataLogistik extends React.Component {
           </nav>
 
           <form onUpdate={this.onUpdate} method="post">
-          <Row className="nama">
+            <Row className="nama">
               <Col className="col-md-2">
                 <h3>Nama Barang</h3>
               </Col>
@@ -213,7 +214,7 @@ class EditDataLogistik extends React.Component {
             <Row className="submit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-              <input
+                <input
                   type="submit"
                   onClick={this.onUpdate.bind(this)}
                   value="Ubah Data"

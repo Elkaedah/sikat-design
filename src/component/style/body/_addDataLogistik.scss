@@ -60,7 +60,8 @@
   .reset {
     margin-bottom: 30px;
   }
-  .reset a {
+  .reset button {
+    font-family: $font-family2;
     border: none;
     border-radius: 10px;
     color: $whiteColor;

@@ -58,12 +58,12 @@ const routes = [
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/AddDataLogistik",
+    path: "/Logistik/AddDataLogistik",
     component: () => <AddDataLogistik />,
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/EditDataLogistik",
+    path: "/Logistik/EditDataLogistik",
     component: () => <EditDataLogistik />,
     title: () => <div> Logistik </div>,
   },
@@ -73,12 +73,12 @@ const routes = [
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/AddDataSupplier",
+    path: "/Logistik/AddDataSupplier",
     component: () => <AddDataSupplier />,
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/EditDataSupplier/:id",
+    path: "/Logistik/EditDataSupplier/:id",
     component: () => <EditDataSupplier />,
     title: () => <div> Logistik </div>,
   },

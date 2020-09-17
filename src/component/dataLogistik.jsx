@@ -61,14 +61,12 @@ class DataLogistik extends React.Component {
                 <td>{item.status}</td>
                 <td>{item.expired}</td>
                 <td>
-                  <Link to="/EditDataLogistik">
-                    <a href="#" className="btn btn-warning edit">
-                      <img src={icoEdit} alt="edit" className="icoOption" />
-                    </a>
+                  <Link
+                    to="/Logistik/EditDataLogistik"
+                    className="btn btn-warning edit"
+                  >
+                    <img src={icoEdit} alt="edit" className="icoOption" />
                   </Link>
-                  <a href="#" className="btn btn-danger delete">
-                    <img src={icoDelete} alt="delete" className="icoOption" />
-                  </a>
                 </td>
               </tr>
             ))}
@@ -128,10 +126,8 @@ class DataLogistik extends React.Component {
               </form>
             </Col>
             <Col className="col-md-6">
-              <Link to="/AddDataLogistik">
-                <a href="" className="btn btn-custom1">
-                  Tambah Data
-                </a>
+              <Link to="/Logistik/AddDataLogistik" className="btn btn-custom1">
+                Tambah Data
               </Link>
             </Col>
           </Row>

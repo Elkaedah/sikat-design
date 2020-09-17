@@ -82,7 +82,7 @@ class DataSupplier extends React.Component {
                 <td>{item.alamat}</td>
                 <td>
                   <Link
-                    to={`/EditDataSupplier/${item.id}`}
+                    to={`/Logistik/EditDataSupplier/${item.id}`}
                     className="btn btn-warning edit"
                   >
                     <img src={icoEdit} alt="edit" className="icoOption" />
@@ -149,7 +149,7 @@ class DataSupplier extends React.Component {
               <img src={icoSearch} alt="search" className="icoSearch" />
             </Col>
             <Col className="col-md-6">
-              <Link to="/AddDataSupplier" className="btn btn-custom1">
+              <Link to="/Logistik/AddDataSupplier" className="btn btn-custom1">
                 Tambah Data
               </Link>
             </Col>
