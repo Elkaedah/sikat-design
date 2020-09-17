@@ -1,7 +1,8 @@
 import React from "react";
 import "./style/index.scss";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
+// import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 
 class EditDataSupplier extends React.Component {
@@ -10,30 +11,86 @@ class EditDataSupplier extends React.Component {
     this.state = {
       nama: "",
       alamat: "",
+      // alert: null,
+      // message: "",
     };
 
-    this.onSubmit = this.onSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
+  }
+
+  componentDidMount() {
+    const supplierId = this.props.match.params.id;
+
+    axios
+      .get(`http://localhost:8000/api/supplier/${supplierId}`)
+      .then((response) => {
+        this.setState({
+          nama: response.data.nama,
+          alamat: response.data.alamat,
+        });
+      });
   }
 
   handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
     this.setState({
-      [name]: value,
+      [event.target.name]: event.target.value,
     });
   }
 
+  // goToHome() {
+  //   const getAlert = () => (
+  //     <SweetAlert
+  //       success
+  //       title="Success!"
+  //       onConfirm={() => this.onSuccess()}
+  //       onCancel={this.hideAlert()}
+  //       timeout={2000}
+  //       confirmBtnText="Oke Siap"
+  //     >
+  //       {this.state.message}
+  //     </SweetAlert>
+  //   );
+  //   this.setState({
+  //     alert: getAlert(),
+  //   });
+  // }
+
+  // onSuccess() {
+  //   this.props.history.push("/DataSupplier");
+  // }
+
+  // hideAlert() {
+  //   this.setState({
+  //     alert: null,
+  //   });
+  // }
+
   onUpdate = (e) => {
     e.preventDefault();
+
+    const item = {
+      nama: this.state.nama,
+      alamat: this.state.alamat,
+    };
+
+    const supplierId = this.props.match.params.id;
     axios
-      .post("http://localhost:8000/api/supplier", {
-        nama: this.state.nama,
-        alamat: this.state.alamat,
-      })
+      .put(`http://localhost:8000/api/supplier/${supplierId}`, item)
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/Logistik/DataSupplier");
+
+        //   var msg = response.data.success;
+        //   if (msg == true) {
+        //     this.setState({
+        //       message: response.data.message,
+        //     });
+        //     return this.goToHome();
+        //   }
+      });
   };
+
   render() {
     return (
       <Container className="container-fluid">
@@ -56,8 +113,8 @@ class EditDataSupplier extends React.Component {
             </ol>
           </nav>
 
-          <form onUpdate={this.onUpdate} method="post">
-          <Row className="nama">
+          <form onSubmit={this.onUpdate} method="post">
+            <Row className="nama">
               <Col className="col-md-2">
                 <h3>Nama</h3>
               </Col>
@@ -84,19 +141,13 @@ class EditDataSupplier extends React.Component {
                   rows="10"
                   value={this.state.alamat}
                   onChange={this.handleInputChange}
-                >
-                </textarea>
+                ></textarea>
               </Col>
             </Row>
             <Row className="submit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-              <input
-                  type="submit"
-                  onClick={this.onUpdate.bind(this)}
-                  value="Ubah Data"
-                  className="form-control"
-                />
+                <button className="form-control">Ubah Data</button>
               </Col>
             </Row>
           </form>
@@ -106,4 +157,4 @@ class EditDataSupplier extends React.Component {
   }
 }
 
-export default EditDataSupplier;
+export default withRouter(EditDataSupplier);

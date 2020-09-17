@@ -8,6 +8,7 @@ import arrowPrev from "./img/icon/arrow-prev.svg";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
+// import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 
 class DataSupplier extends React.Component {
@@ -16,6 +17,8 @@ class DataSupplier extends React.Component {
     this.state = {
       q: "",
       items: null,
+      // alert: null,
+      // msg: null,
     };
 
     this.onKeyPress = this.onKeyPress.bind(this);
@@ -60,21 +63,6 @@ class DataSupplier extends React.Component {
     );
   }
 
-  onEdit = (itemid, e) => {
-    e.preventDefault();
-
-    var data = [...this.state.items];
-    data.forEach((item, index) => {
-      if (item.id === itemid) {
-        this.setState({
-          id: item.id,
-          nama: item.nama,
-          alamat: item.alamat,
-        });
-      }
-    });
-  };
-
   renderSupplierList() {
     const { data, current_page, per_page, total } = this.state.items;
     return (
@@ -93,13 +81,12 @@ class DataSupplier extends React.Component {
                 <td>{item.nama}</td>
                 <td>{item.alamat}</td>
                 <td>
-                  <button
-                    href=""
+                  <Link
+                    to={`/EditDataSupplier/${item.id}`}
                     className="btn btn-warning edit"
-                    onClick={this.onEdit.bind(this, item.id)}
                   >
                     <img src={icoEdit} alt="edit" className="icoOption" />
-                  </button>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -162,10 +149,8 @@ class DataSupplier extends React.Component {
               <img src={icoSearch} alt="search" className="icoSearch" />
             </Col>
             <Col className="col-md-6">
-              <Link to="/AddDataSupplier">
-                <a href="#" className="btn btn-custom1">
-                  Tambah Data
-                </a>
+              <Link to="/AddDataSupplier" className="btn btn-custom1">
+                Tambah Data
               </Link>
             </Col>
           </Row>

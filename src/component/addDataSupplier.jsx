@@ -37,7 +37,7 @@ class AddDataSupplier extends React.Component {
       })
       .then((response) => {
         console.log(response);
-        this.props.history.push("/DataSupplier");
+        this.props.history.push("/Logistik/DataSupplier");
       });
   };
 

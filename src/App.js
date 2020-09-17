@@ -27,187 +27,165 @@ import DetailDataLaporan from "./component/detailDataLaporan";
 import EditDataLaporan from "./component/editDataLaporan";
 
 import { Row, Container, Col, Nav } from "react-bootstrap";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const routes = [{
-        path: "/",
-        exact: true,
-        component: () => < Dashboard / > ,
-        title: () => < div > Dashboard < /div>,
-    },
-    {
-        path: "/Logistik",
-        exact: true,
-        component: () => < Logistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Bencana",
-        component: () => < h2 > Ini Nanti Bencana Alam < /h2>,
-        title: () => < div > Bencana Alam < /div>,
-    },
-    {
-        path: "/Penanggulangan",
-        component: () => < h2 > Ini Nanti Data Penangulangan < /h2>,
-        title: () => < div > Penanggulangan Bencana < /div>,
-    },
-    {
-        path: "/Logistik/DataLogistik",
-        component: () => < DataLogistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/AddDataLogistik",
-        component: () => < AddDataLogistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/EditDataLogistik",
-        component: () => < EditDataLogistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Logistik/DataSupplier",
-        component: () => < DataSupplier / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/AddDataSupplier",
-        component: () => < AddDataSupplier / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/EditDataSupplier",
-        component: () => < EditDataSupplier / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Pegawai",
-        component: () => < Tabel / > ,
-        title: () => < div > User < /div>,
-    },
-    {
-        path: "/Relawan",
-        component: () => < h2 > Ini Nanti Data Relawan < /h2>,
-        title: () => < div > Relawan < /div>,
-    },
-    {
-        path: "/Laporan",
-        component: () => < Laporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
-    {
-        path: "/AddDataLaporan",
-        component: () => < AddDataLaporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
-    {
-        path: "/DetailDataLaporan",
-        component: () => < DetailDataLaporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
-    {
-        path: "/EditDataLaporan",
-        component: () => < EditDataLaporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    component: () => <Dashboard />,
+    title: () => <div> Dashboard </div>,
+  },
+  {
+    path: "/Logistik",
+    exact: true,
+    component: () => <Logistik />,
+    title: () => <div> Logistik </div>,
+  },
+  {
+    path: "/Bencana",
+    component: () => <h2> Ini Nanti Bencana Alam </h2>,
+    title: () => <div> Bencana Alam </div>,
+  },
+  {
+    path: "/Penanggulangan",
+    component: () => <h2> Ini Nanti Data Penangulangan </h2>,
+    title: () => <div> Penanggulangan Bencana </div>,
+  },
+  {
+    path: "/Logistik/DataLogistik",
+    component: () => <DataLogistik />,
+    title: () => <div> Logistik </div>,
+  },
+  {
+    path: "/AddDataLogistik",
+    component: () => <AddDataLogistik />,
+    title: () => <div> Logistik </div>,
+  },
+  {
+    path: "/EditDataLogistik",
+    component: () => <EditDataLogistik />,
+    title: () => <div> Logistik </div>,
+  },
+  {
+    path: "/Logistik/DataSupplier",
+    component: () => <DataSupplier />,
+    title: () => <div> Logistik </div>,
+  },
+  {
+    path: "/AddDataSupplier",
+    component: () => <AddDataSupplier />,
+    title: () => <div> Logistik </div>,
+  },
+  {
+    path: "/EditDataSupplier/:id",
+    component: () => <EditDataSupplier />,
+    title: () => <div> Logistik </div>,
+  },
+  {
+    path: "/Pegawai",
+    component: () => <Tabel />,
+    title: () => <div> User </div>,
+  },
+  {
+    path: "/Relawan",
+    component: () => <h2> Ini Nanti Data Relawan </h2>,
+    title: () => <div> Relawan </div>,
+  },
+  {
+    path: "/Laporan",
+    component: () => <Laporan />,
+    title: () => <div> Laporan </div>,
+  },
+  {
+    path: "/AddDataLaporan",
+    component: () => <AddDataLaporan />,
+    title: () => <div> Laporan </div>,
+  },
+  {
+    path: "/DetailDataLaporan",
+    component: () => <DetailDataLaporan />,
+    title: () => <div> Laporan </div>,
+  },
+  {
+    path: "/EditDataLaporan",
+    component: () => <EditDataLaporan />,
+    title: () => <div> Laporan </div>,
+  },
 ];
 
 export default function App() {
-    return ( <
-        Router >
-        <
-        Container fluid >
-        <
-        Row >
-        <
-        Col className = "col-md-2 bg-white position-sticky shadow" >
-        <
-        Sidebar / >
-        <
-        /Col>{" "} <
-        Col className = "col-md-10" >
-        <
-        Navbar > < /Navbar>{" "} <
-        Switch > { " " } {
-            routes.map((route, index) => ( <
-                Route key = { index }
-                path = { route.path }
-                exact = { route.exact }
-                children = { < route.component / > }
+  return (
+    <Router>
+      <Container fluid>
+        <Row>
+          <Col className="col-md-2 bg-white position-sticky shadow">
+            <Sidebar />
+          </Col>{" "}
+          <Col className="col-md-10">
+            <Navbar> </Navbar>{" "}
+            <Switch>
+              {" "}
+              {routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  children={<route.component />}
                 />
-            ))
-        } { " " } <
-        /Switch>{" "} <
-        /Col>{" "} <
-        /Row>{" "} <
-        /Container>{" "} <
-        /Router>
-    );
+              ))}{" "}
+            </Switch>{" "}
+          </Col>{" "}
+        </Row>{" "}
+      </Container>{" "}
+    </Router>
+  );
 }
 
 function Dashboard() {
-    return ( <
-        div className = "main" >
-        <
-        Welcome > < /Welcome> <Chart / >
-        <
-        Row >
-        <
-        Col md = { 9 } >
-        <
-        Chart / >
-        <
-        /Col>{" "} <
-        Col md = { 3 } >
-        <
-        Chart2 / >
-        <
-        /Col>{" "} <
-        /Row>{" "} <
-        Chart / >
-        <
-        /div>
-    );
+  return (
+    <div className="main">
+      <Welcome> </Welcome> <Chart />
+      <Row>
+        <Col md={9}>
+          <Chart />
+        </Col>{" "}
+        <Col md={3}>
+          <Chart2 />
+        </Col>{" "}
+      </Row>{" "}
+      <Chart />
+    </div>
+  );
 }
 
 function Navbar() {
-    return ( <
-        Nav className = "justify-content-between"
-        activeKey = "/home"
-        onSelect = {
-            (selectedKey) => alert(`selected ${selectedKey}`) } >
-        <
-        Nav.Item >
-        <
-        Nav.Link className = "judul"
-        href = "" >
-        <
-        Switch > { " " } {
-            routes.map((route, index) => ( <
-                Route key = { index }
-                path = { route.path }
-                exact = { route.exact }
-                children = { < route.title / > }
-                />
-            ))
-        } { " " } <
-        /Switch>{" "} <
-        /Nav.Link>{" "} <
-        /Nav.Item>{" "} <
-        Nav.Item >
-        <
-        Nav.Link eventKey = "link-1" >
-        <
-        img className = "profile-icon"
-        src = { profile }
-        />{" "} <
-        /Nav.Link>{" "} <
-        /Nav.Item>{" "} <
-        /Nav>
-    );
+  return (
+    <Nav
+      className="justify-content-between"
+      activeKey="/home"
+      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+    >
+      <Nav.Item>
+        <Nav.Link className="judul" href="">
+          <Switch>
+            {" "}
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                children={<route.title />}
+              />
+            ))}{" "}
+          </Switch>{" "}
+        </Nav.Link>{" "}
+      </Nav.Item>{" "}
+      <Nav.Item>
+        <Nav.Link eventKey="link-1">
+          <img className="profile-icon" src={profile} />{" "}
+        </Nav.Link>{" "}
+      </Nav.Item>{" "}
+    </Nav>
+  );
 }
