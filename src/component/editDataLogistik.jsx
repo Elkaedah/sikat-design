@@ -19,42 +19,45 @@ class EditDataLogistik extends React.Component {
       categories: [],
     };
 
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  onUpdate = (e) => {
-    e.preventDefault();
-
-    axios
-      .post("http://localhost:8000/api/logistik", {
-        id_kategori: this.state.id_kategori,
-        nama_barang: this.state.nama_barang,
-        stok: this.state.stok,
-        id_supplier: this.state.id_supplier,
-        status: this.state.status,
-        expired: this.state.expired,
-      })
-      .then((response) => {
-        console.log(response);
-        this.props.history.push("/Logistik/DataLogistik");
-      });
-  };
 
   componentDidMount() {
     this.getOptionSupplier();
     this.getOptionKategori();
+    const logistikId = this.props.match.params.id;
+
+    axios
+      .get(`http://localhost:8000/api/logistik/${logistikId}`)
+      .then((response) => {
+        this.setState({
+          id_logistik: response.data.id_logistik,
+          id_kategori: response.data.id_kategori,
+          nama_barang: response.data.nama_barang,
+          stok: response.data.stok,
+          id_supplier: response.data.id_supplier,
+          status: response.data.status,
+          expired: response.data.expired,
+        });
+      });
   }
+
+  handleInputChange(event) {
+    // const target = event.target;
+    // const value = target.value;
+    // const name = target.name;
+
+    this.setState({
+      // [name]: value,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  // componentDidMount() {
+  //   this.getOptionSupplier();
+  //   this.getOptionKategori();
+  // }
 
   async getOptionSupplier() {
     const url = "http://localhost:8000/api/supplier/all";
@@ -82,6 +85,50 @@ class EditDataLogistik extends React.Component {
     );
   }
 
+  onUpdate = (e) => {
+    e.preventDefault();
+
+    const item = {
+      id_logistik: this.state.id_logistik,
+      id_kategori: this.state.id_kategori,
+      nama_barang: this.state.nama_barang,
+      stok: this.state.stok,
+      id_supplier: this.state.id_supplier,
+      status: this.state.status,
+      expired: this.state.expired,
+    };
+
+    const logistikId = this.props.match.params.id;
+    axios
+      .put(`http://localhost:8000/api/logistik/${logistikId}`, item)
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/Logistik/DataLogistik");
+
+        //   var msg = response.data.success;
+        //   if (msg == true) {
+        //     this.setState({
+        //       message: response.data.message,
+        //     });
+        //     return this.goToHome();
+        //   }
+      });
+
+    // axios
+    //   .post("http://localhost:8000/api/logistik", {
+    //     id_kategori: this.state.id_kategori,
+    //     nama_barang: this.state.nama_barang,
+    //     stok: this.state.stok,
+    //     id_supplier: this.state.id_supplier,
+    //     status: this.state.status,
+    //     expired: this.state.expired,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.props.history.push("/Logistik/DataLogistik");
+    //   });
+  };
+
   render() {
     const { suppliers, categories } = this.state;
     return (
@@ -89,23 +136,23 @@ class EditDataLogistik extends React.Component {
         <div className="editDataLogistik">
           <h1 className="dataTitle">Ubah Data ...</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link to="/Logistik">Logistik</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link to="/Logistik/DataLogistik">Data Logistik</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Ubah Data Logistik
               </li>
             </ol>
           </nav>
 
-          <form onUpdate={this.onUpdate} method="post">
+          <form onSubmit={this.onUpdate} method="post">
             <Row className="nama">
               <Col className="col-md-2">
                 <h3>Nama Barang</h3>
@@ -214,12 +261,14 @@ class EditDataLogistik extends React.Component {
             <Row className="submit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-                <input
+                {/* <input
                   type="submit"
                   onClick={this.onUpdate.bind(this)}
                   value="Ubah Data"
                   className="form-control"
-                />
+                /> */}
+
+                <button className="form-control">Ubah Data</button>
               </Col>
             </Row>
           </form>
@@ -229,4 +278,4 @@ class EditDataLogistik extends React.Component {
   }
 }
 
-export default EditDataLogistik;
+export default withRouter(EditDataLogistik);

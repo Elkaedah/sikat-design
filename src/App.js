@@ -63,7 +63,7 @@ const routes = [
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/Logistik/EditDataLogistik",
+    path: "/Logistik/EditDataLogistik/:id",
     component: () => <EditDataLogistik />,
     title: () => <div> Logistik </div>,
   },

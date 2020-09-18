@@ -49,7 +49,9 @@
   .submit {
     margin-bottom: 20px;
   }
-  .submit input {
+  .submit button {
+    border: none;
+    border-radius: 10px;
     background: linear-gradient(to left, $primaryColor, $fiveColor);
     color: $whiteColor;
     letter-spacing: 1px;

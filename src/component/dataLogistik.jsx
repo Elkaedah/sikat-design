@@ -2,13 +2,13 @@ import React from "react";
 import "./style/index.scss";
 import icoSearch from "./img/icon/IcoSearch.svg";
 import icoEdit from "./img/icon/IcoEdit.svg";
-import icoDelete from "./img/icon/IcoDelete.svg";
 import arrowNext from "./img/icon/arrow-next.svg";
 import arrowPrev from "./img/icon/arrow-prev.svg";
-import axios from "axios";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
+import axios from "axios";
 
 class DataLogistik extends React.Component {
   constructor() {
@@ -62,7 +62,7 @@ class DataLogistik extends React.Component {
                 <td>{item.expired}</td>
                 <td>
                   <Link
-                    to="/Logistik/EditDataLogistik"
+                    to={`/Logistik/EditDataLogistik/${item.id}`}
                     className="btn btn-warning edit"
                   >
                     <img src={icoEdit} alt="edit" className="icoOption" />
