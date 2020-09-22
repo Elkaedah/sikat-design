@@ -95,7 +95,7 @@ class EditDataSupplier extends React.Component {
     return (
       <Container className="container-fluid">
         <div className="editDataSupplier">
-          <h1 className="dataTitle">Ubah Data ...</h1>
+          <h1 className="dataTitle">Ubah Data {this.state.nama}</h1>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
