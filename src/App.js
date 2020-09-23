@@ -16,6 +16,12 @@ import DataSupplier from "./component/dataSupplier";
 import AddDataSupplier from "./component/addDataSupplier";
 import EditDataSupplier from "./component/editDataSupplier";
 
+// Penanggulangan
+import Penanggulangan from "./component/penanggulangan";
+import DataBencana from "./component/dataBencana";
+import DataBantuan from "./component/dataBantuan";
+import DataTimRelawan from "./component/dataTimRelawan";
+
 // User
 import Tabel from "./component/tabel";
 import User from "./component/user";
@@ -43,16 +49,6 @@ const routes = [
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/Bencana",
-    component: () => <h2> Ini Nanti Bencana Alam </h2>,
-    title: () => <div> Bencana Alam </div>,
-  },
-  {
-    path: "/Penanggulangan",
-    component: () => <h2> Ini Nanti Data Penangulangan </h2>,
-    title: () => <div> Penanggulangan Bencana </div>,
-  },
-  {
     path: "/Logistik/DataLogistik",
     component: () => <DataLogistik />,
     title: () => <div> Logistik </div>,
@@ -63,7 +59,7 @@ const routes = [
     title: () => <div> Logistik </div>,
   },
   {
-    path: "/Logistik/EditDataLogistik/:id",
+    path: "/Logistik/EditDataLogistik/:id_logistik",
     component: () => <EditDataLogistik />,
     title: () => <div> Logistik </div>,
   },
@@ -82,6 +78,27 @@ const routes = [
     component: () => <EditDataSupplier />,
     title: () => <div> Logistik </div>,
   },
+  {
+    path: "/Penanggulangan",
+    component: () => <Penanggulangan />,
+    title: () => <div> Penanggulangan Bencana </div>,
+  },
+  {
+    path: "/Penanggulangan/DataBencana",
+    component: () => <DataBencana />,
+    title: () => <div>Data Bencana</div>,
+  },
+  {
+    path: "/Penanggulangan/DataBantuan",
+    component: () => <DataBantuan />,
+    title: () => <div>Data Bantuan</div>,
+  },
+  {
+    path: "/Penanggulangan/DataTimRelawan",
+    component: () => <DataTimRelawan />,
+    title: () => <div>Data Tim Relawan</div>,
+  },
+
   {
     path: "/Pegawai",
     component: () => <Tabel />,

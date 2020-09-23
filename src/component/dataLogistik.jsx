@@ -62,7 +62,7 @@ class DataLogistik extends React.Component {
                 <td>{item.expired}</td>
                 <td>
                   <Link
-                    to={`/Logistik/EditDataLogistik/${item.id}`}
+                    to={`/Logistik/EditDataLogistik/${item.id_logistik}`}
                     className="btn btn-warning edit"
                   >
                     <img src={icoEdit} alt="edit" className="icoOption" />

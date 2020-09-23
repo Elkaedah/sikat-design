@@ -8,13 +8,15 @@ class EditDataLogistik extends React.Component {
   constructor() {
     super();
     this.state = {
-      id_logistik: "",
-      id_kategori: "",
+      // id_logistik: "",
       nama_barang: "",
+      jenis_kategori: "",
+      nama: "",
+      // id_supplier: "",
+      // id_kategori: "",
       stok: "",
-      id_supplier: "",
-      status: "",
       expired: "",
+      status: "",
       suppliers: [],
       categories: [],
     };
@@ -24,23 +26,30 @@ class EditDataLogistik extends React.Component {
   }
 
   componentDidMount() {
-    this.getOptionSupplier();
-    this.getOptionKategori();
-    const logistikId = this.props.match.params.id;
+    // this.getOptionSupplier();
+    // this.getOptionKategori();
+    const logistikId = this.props.match.params.id_logistik;
 
     axios
       .get(`http://localhost:8000/api/logistik/${logistikId}`)
       .then((response) => {
         this.setState({
-          id_logistik: response.data.id_logistik,
-          id_kategori: response.data.id_kategori,
+          // id_logistik: response.data.id_logistik,
           nama_barang: response.data.nama_barang,
+          jenis_kategori: response.data.jenis_kategori,
+          nama: response.data.nama,
+
+          // id_supplier: response.data.id_supplier,
+          // id_kategori: response.data.id_kategori,
           stok: response.data.stok,
-          id_supplier: response.data.id_supplier,
-          status: response.data.status,
           expired: response.data.expired,
+          status: response.data.status,
         });
+        console.log(this.state.nama_barang);
       });
+    // .catch((error) => {
+    //   console.log(error);
+    // });
   }
 
   handleInputChange(event) {
@@ -54,51 +63,49 @@ class EditDataLogistik extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   this.getOptionSupplier();
-  //   this.getOptionKategori();
+  // async getOptionSupplier() {
+  //   const url = "http://localhost:8000/api/supplier/all";
+  //   const response = await axios.get(url);
+  //   this.setState(
+  //     {
+  //       suppliers: response.data,
+  //     },
+  //     () => {
+  //       console.log(this.state.suppliers);
+  //     }
+  //   );
   // }
 
-  async getOptionSupplier() {
-    const url = "http://localhost:8000/api/supplier/all";
-    const response = await axios.get(url);
-    this.setState(
-      {
-        suppliers: response.data,
-      },
-      () => {
-        console.log(this.state.suppliers);
-      }
-    );
-  }
-
-  async getOptionKategori() {
-    const url = "http://localhost:8000/api/kategori";
-    const response = await axios.get(url);
-    this.setState(
-      {
-        categories: response.data,
-      },
-      () => {
-        console.log(this.state.categories);
-      }
-    );
-  }
+  // async getOptionKategori() {
+  //   const url = "http://localhost:8000/api/kategori";
+  //   const response = await axios.get(url);
+  //   this.setState(
+  //     {
+  //       categories: response.data,
+  //     },
+  //     () => {
+  //       console.log(this.state.categories);
+  //     }
+  //   );
+  // }
 
   onUpdate = (e) => {
     e.preventDefault();
 
     const item = {
-      id_logistik: this.state.id_logistik,
-      id_kategori: this.state.id_kategori,
+      // id_logistik: this.state.id_logistik,
       nama_barang: this.state.nama_barang,
+
+      jenis_kategori: this.state.jenis_kategori,
+      nama: this.state.nama,
+      // id_supplier: this.state.id_supplier,
+      // id_kategori: this.state.id_kategori,
       stok: this.state.stok,
-      id_supplier: this.state.id_supplier,
-      status: this.state.status,
       expired: this.state.expired,
+      status: this.state.status,
     };
 
-    const logistikId = this.props.match.params.id;
+    const logistikId = this.props.match.params.id_logistik;
     axios
       .put(`http://localhost:8000/api/logistik/${logistikId}`, item)
       .then((response) => {
@@ -130,11 +137,12 @@ class EditDataLogistik extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const { suppliers, categories } = this.state;
     return (
       <Container className="container-fluid">
         <div className="editDataLogistik">
-          <h1 className="dataTitle">Ubah Data ...</h1>
+          <h1 className="dataTitle">Ubah Data {this.state.nama_barang}</h1>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
@@ -182,11 +190,11 @@ class EditDataLogistik extends React.Component {
                   className="form-control"
                 >
                   <option value="#"> - Pilih Supplier -</option>
-                  {suppliers.map((item, supplier) => (
+                  {/* {suppliers.map((item, supplier) => (
                     <option key={supplier} value={item.id}>
                       {item.nama}
                     </option>
-                  ))}
+                  ))} */}
                 </select>
               </Col>
             </Row>
@@ -204,11 +212,11 @@ class EditDataLogistik extends React.Component {
                   className="form-control"
                 >
                   <option value="#"> - Pilih Kategori -</option>
-                  {categories.map((item, kategori) => (
+                  {/* {categories.map((item, kategori) => (
                     <option key={kategori} value={item.id}>
                       {item.jenis_kategori}
                     </option>
-                  ))}
+                  ))} */}
                 </select>
               </Col>
               <Col className="col-md-1 offset-1">
