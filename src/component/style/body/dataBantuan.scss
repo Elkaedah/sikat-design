@@ -1,0 +1,18 @@
+.dataBantuan {
+  margin-top: 20px;
+
+  .dataTitle {
+    font-family: $font-family1;
+    color: $primaryColor;
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 3px;
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    padding: 0;
+  }
+}

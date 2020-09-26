@@ -74,7 +74,7 @@ class Laporan extends React.Component {
                         className="icoOptionDetail"
                       />
                     </Link>
-                    <a href="#" class="btn btn-danger delete">
+                    <a href="#" className="btn btn-danger delete">
                       <img src={icoDelete} alt="delete" className="icoOption" />
                     </a>
                   </td>

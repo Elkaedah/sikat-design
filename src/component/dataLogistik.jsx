@@ -75,7 +75,11 @@ class DataLogistik extends React.Component {
                 <td>{item.expired}</td>
                 <td>
                   <Link
+<<<<<<< HEAD
                     to={`/Logistik/EditDataLogistik/${item.id}`}
+=======
+                    to={`/Logistik/EditDataLogistik/${item.id_logistik}`}
+>>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
                     className="btn btn-warning edit"
                   >
                     <img src={icoEdit} alt="edit" className="icoOption" />
