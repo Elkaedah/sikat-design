@@ -27,11 +27,7 @@ import DetailDataLaporan from "./component/detailDataLaporan";
 import EditDataLaporan from "./component/editDataLaporan";
 
 import { Row, Container, Col, Nav } from "react-bootstrap";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const routes = [{
         path: "/",
@@ -61,12 +57,12 @@ const routes = [{
         title: () => < div > Logistik < /div>,
     },
     {
-        path: "/AddDataLogistik",
+        path: "/Logistik/AddDataLogistik",
         component: () => < AddDataLogistik / > ,
         title: () => < div > Logistik < /div>,
     },
     {
-        path: "/EditDataLogistik",
+        path: "/Logistik/EditDataLogistik/:id",
         component: () => < EditDataLogistik / > ,
         title: () => < div > Logistik < /div>,
     },
@@ -76,12 +72,12 @@ const routes = [{
         title: () => < div > Logistik < /div>,
     },
     {
-        path: "/AddDataSupplier",
+        path: "/Logistik/AddDataSupplier",
         component: () => < AddDataSupplier / > ,
         title: () => < div > Logistik < /div>,
     },
     {
-        path: "/EditDataSupplier",
+        path: "/Logistik/EditDataSupplier/:id",
         component: () => < EditDataSupplier / > ,
         title: () => < div > Logistik < /div>,
     },
@@ -132,8 +128,9 @@ export default function App() {
         /Col>{" "} <
         Col className = "col-md-10" >
         <
-        Navbar > < /Navbar>{" "} <
-        Switch > { " " } {
+        Navbar / >
+        <
+        Switch > {
             routes.map((route, index) => ( <
                 Route key = { index }
                 path = { route.path }
@@ -141,11 +138,11 @@ export default function App() {
                 children = { < route.component / > }
                 />
             ))
-        } { " " } <
-        /Switch>{" "} <
-        /Col>{" "} <
-        /Row>{" "} <
-        /Container>{" "} <
+        } <
+        /Switch> <
+        /Col> <
+        /Row> <
+        /Container> <
         /Router>
     );
 }

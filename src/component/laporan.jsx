@@ -8,8 +8,8 @@ import arrowPrev from "./img/icon/arrow-prev.svg";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Pagination from "react-js-pagination";
-import axios from "axios";
+// import Pagination from "react-js-pagination";
+// import axios from "axios";
 
 class Laporan extends React.Component {
   render() {
@@ -18,11 +18,11 @@ class Laporan extends React.Component {
         <div className="laporan">
           <h1 className="dataTitle">Data Laporan</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Data Laporan
               </li>
             </ol>
@@ -40,10 +40,8 @@ class Laporan extends React.Component {
               </form>
             </Col>
             <Col className="col-md-6">
-              <Link to="/AddDataLaporan">
-                <a href="" className="btn btn-custom1">
-                  Tambah Data
-                </a>
+              <Link to="/AddDataLaporan" className="btn btn-custom1">
+                Tambah Data
               </Link>
             </Col>
           </Row>
@@ -66,14 +64,15 @@ class Laporan extends React.Component {
                   <td>Terkonfirmasi</td>
                   <td>Terverifikasi</td>
                   <td>
-                    <Link to="/DetailDataLaporan">
-                      <a href="#" class="btn btn-primary edit">
-                        <img
-                          src={icoDetail}
-                          alt="detail"
-                          className="icoOptionDetail"
-                        />
-                      </a>
+                    <Link
+                      to="/DetailDataLaporan"
+                      className="btn btn-primary edit"
+                    >
+                      <img
+                        src={icoDetail}
+                        alt="detail"
+                        className="icoOptionDetail"
+                      />
                     </Link>
                     <a href="#" class="btn btn-danger delete">
                       <img src={icoDelete} alt="delete" className="icoOption" />
@@ -86,14 +85,15 @@ class Laporan extends React.Component {
                   <td>Terkonfirmasi</td>
                   <td>Terverifikasi</td>
                   <td>
-                    <Link to="/DetailDataLaporan">
-                      <a href="#" class="btn btn-primary edit">
-                        <img
-                          src={icoDetail}
-                          alt="detail"
-                          className="icoOptionDetail"
-                        />
-                      </a>
+                    <Link
+                      to="/DetailDataLaporan"
+                      className="btn btn-primary edit"
+                    >
+                      <img
+                        src={icoDetail}
+                        alt="detail"
+                        className="icoOptionDetail"
+                      />
                     </Link>
                     <a href="#" class="btn btn-danger delete">
                       <img src={icoDelete} alt="delete" className="icoOption" />
@@ -106,14 +106,15 @@ class Laporan extends React.Component {
                   <td>Terkonfirmasi</td>
                   <td>Terverifikasi</td>
                   <td>
-                    <Link to="/DetailDataLaporan">
-                      <a href="#" class="btn btn-primary edit">
-                        <img
-                          src={icoDetail}
-                          alt="detail"
-                          className="icoOptionDetail"
-                        />
-                      </a>
+                    <Link
+                      to="/DetailDataLaporan"
+                      className="btn btn-primary edit"
+                    >
+                      <img
+                        src={icoDetail}
+                        alt="detail"
+                        className="icoOptionDetail"
+                      />
                     </Link>
                     <a href="#" class="btn btn-danger delete">
                       <img src={icoDelete} alt="delete" className="icoOption" />

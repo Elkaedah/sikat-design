@@ -14,11 +14,11 @@ class Logistik extends React.Component {
         <div className="logistik">
           <h1 className="dataTitle">Data Logistik</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Logistik
               </li>
             </ol>
@@ -28,11 +28,11 @@ class Logistik extends React.Component {
               <div className="box-card">
                 <img className="imgCard" src={logistik} alt="Logistik" />
                 <h2 className="boxTitle">KELOLA DATA LOGISTIK</h2>
-                <Link to="/Logistik/DataLogistik">
-                  <a href="" className="btn btn-block btn-custom1">
-                    Lebih Lanjut{" "}
-                    <img src={arrow} alt="btn" className="IcoNext" />
-                  </a>
+                <Link
+                  to="/Logistik/DataLogistik"
+                  className="btn btn-block btn-custom1"
+                >
+                  Lebih Lanjut <img src={arrow} alt="btn" className="IcoNext" />
                 </Link>
               </div>
             </Col>
@@ -40,11 +40,11 @@ class Logistik extends React.Component {
               <div className="box-card">
                 <img className="imgCard" src={supplier} alt="Supplier" />
                 <h2 className="boxTitle">KELOLA DATA SUPPLIER</h2>
-                <Link to="/Logistik/DataSupplier">
-                  <a href="" className="btn btn-block btn-custom1">
-                    Lebih Lanjut{" "}
-                    <img src={arrow} alt="btn" className="IcoNext" />
-                  </a>
+                <Link
+                  to="/Logistik/DataSupplier"
+                  className="btn btn-block btn-custom1"
+                >
+                  Lebih Lanjut <img src={arrow} alt="btn" className="IcoNext" />
                 </Link>
               </div>
             </Col>

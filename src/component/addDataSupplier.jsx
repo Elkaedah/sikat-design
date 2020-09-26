@@ -10,7 +10,7 @@ class AddDataSupplier extends React.Component {
     this.state = {
       id: "",
       nama: "",
-      alamat: ""
+      alamat: "",
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,23 +23,22 @@ class AddDataSupplier extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:8000/api/supplier', 
-        { 
-          nama: this.state.nama,
-          alamat: this.state.alamat
-        })
-        .then(response => {
-            console.log(response);
-            this.props.history.push("/DataSupplier");
-        });
-    
+    axios
+      .post("http://localhost:8000/api/supplier", {
+        nama: this.state.nama,
+        alamat: this.state.alamat,
+      })
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/Logistik/DataSupplier");
+      });
   };
 
   render() {
@@ -48,17 +47,17 @@ class AddDataSupplier extends React.Component {
         <div className="addDataSupplier">
           <h1 className="dataTitle">Tambah Data Supplier</h1>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link to="/Logistik">Logistik</Link>
               </li>
-              <li class="breadcrumb-item">
-                <Link to="/DataSupplier">Data Supplier</Link>
+              <li className="breadcrumb-item">
+                <Link to="/Logistik/DataSupplier">Data Supplier</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Tambah Data Supplier
               </li>
             </ol>
@@ -109,9 +108,9 @@ class AddDataSupplier extends React.Component {
             <Row className="reset">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-                <a href="" className="form-control btn btn-danger btn-reset">
+                <button className="form-control btn btn-danger btn-reset">
                   Reset
-                </a>
+                </button>
               </Col>
             </Row>
           </form>

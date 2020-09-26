@@ -2,19 +2,20 @@ import React from "react";
 import "./style/index.scss";
 import icoSearch from "./img/icon/IcoSearch.svg";
 import icoEdit from "./img/icon/IcoEdit.svg";
-import icoDelete from "./img/icon/IcoDelete.svg";
 import arrowNext from "./img/icon/arrow-next.svg";
 import arrowPrev from "./img/icon/arrow-prev.svg";
-import axios from "axios";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
+import axios from "axios";
 
 class DataLogistik extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: null,
+      items: [],
+      loading: true,
     };
   }
 
@@ -23,20 +24,32 @@ class DataLogistik extends React.Component {
   }
 
   async getList(pageNumber = 1) {
+    try{
     const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
-    const response = await axios.get(url);
+    const response =  await axios.get(url,{timeout: 2500});
     this.setState(
       {
         items: response.data,
+        loading: false,
       },
       () => {
         console.log(this.state.items);
       }
     );
+    }catch(err){
+    alert(err);
+   }
   }
 
   renderLogistikList() {
     const { data, current_page, per_page, total } = this.state.items;
+    const {loading} = this.state;
+    if (loading){
+      return(
+        <div class="loader"></div>
+      )
+    }
+    else{
     return (
       <div className="cardTable">
         <table className="table table-striped">
@@ -61,14 +74,12 @@ class DataLogistik extends React.Component {
                 <td>{item.status}</td>
                 <td>{item.expired}</td>
                 <td>
-                  <Link to="/EditDataLogistik">
-                    <a href="#" className="btn btn-warning edit">
-                      <img src={icoEdit} alt="edit" className="icoOption" />
-                    </a>
+                  <Link
+                    to={`/Logistik/EditDataLogistik/${item.id}`}
+                    className="btn btn-warning edit"
+                  >
+                    <img src={icoEdit} alt="edit" className="icoOption" />
                   </Link>
-                  <a href="#" className="btn btn-danger delete">
-                    <img src={icoDelete} alt="delete" className="icoOption" />
-                  </a>
                 </td>
               </tr>
             ))}
@@ -95,6 +106,7 @@ class DataLogistik extends React.Component {
         </nav>
       </div>
     );
+  }
   }
 
   render() {
@@ -128,15 +140,13 @@ class DataLogistik extends React.Component {
               </form>
             </Col>
             <Col className="col-md-6">
-              <Link to="/AddDataLogistik">
-                <a href="" className="btn btn-custom1">
-                  Tambah Data
-                </a>
+              <Link to="/Logistik/AddDataLogistik" className="btn btn-custom1">
+                Tambah Data
               </Link>
             </Col>
           </Row>
 
-          {items && this.renderLogistikList()}
+          {this.renderLogistikList()}
         </div>
       </Container>
     );

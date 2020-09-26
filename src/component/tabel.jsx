@@ -25,9 +25,7 @@ class Tabel extends React.Component {
     console.log(response.data);
     // console.log(Halaman())
     this.setState({
-      Post: response.data.map((data, index) => (
-        <th key={index}>{data.name}</th>
-      ))
+
     },
     {
       items :response.data
@@ -46,6 +44,7 @@ class Tabel extends React.Component {
        return <th key={index}>{key.toUpperCase()}</th>
     })
  }
+ 
   renderLogistikList() {
     const { data } = this.state.items;
     return (
@@ -64,7 +63,7 @@ class Tabel extends React.Component {
     );
   }
   render(){
-    console.log(Halaman)
+    console.log(this.props)
     const { items } = this.state;
   return (
     <Container fluid>
