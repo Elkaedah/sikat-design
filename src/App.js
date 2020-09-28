@@ -34,125 +34,6 @@ import EditDataLaporan from "./component/editDataLaporan";
 
 import { Row, Container, Col, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-<<<<<<< HEAD
-
-const routes = [{
-        path: "/",
-        exact: true,
-        component: () => < Dashboard / > ,
-        title: () => < div > Dashboard < /div>,
-    },
-    {
-        path: "/Logistik",
-        exact: true,
-        component: () => < Logistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Bencana",
-        component: () => < h2 > Ini Nanti Bencana Alam < /h2>,
-        title: () => < div > Bencana Alam < /div>,
-    },
-    {
-        path: "/Penanggulangan",
-        component: () => < h2 > Ini Nanti Data Penangulangan < /h2>,
-        title: () => < div > Penanggulangan Bencana < /div>,
-    },
-    {
-        path: "/Logistik/DataLogistik",
-        component: () => < DataLogistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Logistik/AddDataLogistik",
-        component: () => < AddDataLogistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Logistik/EditDataLogistik/:id",
-        component: () => < EditDataLogistik / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Logistik/DataSupplier",
-        component: () => < DataSupplier / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Logistik/AddDataSupplier",
-        component: () => < AddDataSupplier / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Logistik/EditDataSupplier/:id",
-        component: () => < EditDataSupplier / > ,
-        title: () => < div > Logistik < /div>,
-    },
-    {
-        path: "/Pegawai",
-        component: () => < Tabel / > ,
-        title: () => < div > User < /div>,
-    },
-    {
-        path: "/Relawan",
-        component: () => < h2 > Ini Nanti Data Relawan < /h2>,
-        title: () => < div > Relawan < /div>,
-    },
-    {
-        path: "/Laporan",
-        component: () => < Laporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
-    {
-        path: "/AddDataLaporan",
-        component: () => < AddDataLaporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
-    {
-        path: "/DetailDataLaporan",
-        component: () => < DetailDataLaporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
-    {
-        path: "/EditDataLaporan",
-        component: () => < EditDataLaporan / > ,
-        title: () => < div > Laporan < /div>,
-    },
-];
-
-export default function App() {
-    return ( <
-        Router >
-        <
-        Container fluid >
-        <
-        Row >
-        <
-        Col className = "col-md-2 bg-white position-sticky shadow" >
-        <
-        Sidebar / >
-        <
-        /Col>{" "} <
-        Col className = "col-md-10" >
-        <
-        Navbar / >
-        <
-        Switch > {
-            routes.map((route, index) => ( <
-                Route key = { index }
-                path = { route.path }
-                exact = { route.exact }
-                children = { < route.component / > }
-                />
-            ))
-        } <
-        /Switch> <
-        /Col> <
-        /Row> <
-        /Container> <
-        /Router>
-    );
-=======
 
 const routes = [
   {
@@ -276,7 +157,6 @@ export default function App() {
       </Container>{" "}
     </Router>
   );
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
 }
 
 function Dashboard() {

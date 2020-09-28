@@ -8,15 +8,6 @@ class EditDataLogistik extends React.Component {
   constructor() {
     super();
     this.state = {
-<<<<<<< HEAD
-      id_logistik: "",
-      id_kategori: "",
-      nama_barang: "",
-      stok: "",
-      id_supplier: "",
-      status: "",
-      expired: "",
-=======
       // id_logistik: "",
       nama_barang: "",
       jenis_kategori: "",
@@ -26,7 +17,6 @@ class EditDataLogistik extends React.Component {
       stok: "",
       expired: "",
       status: "",
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
       suppliers: [],
       categories: [],
     };
@@ -36,31 +26,14 @@ class EditDataLogistik extends React.Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    this.getOptionSupplier();
-    this.getOptionKategori();
-    const logistikId = this.props.match.params.id;
-=======
     // this.getOptionSupplier();
     // this.getOptionKategori();
     const logistikId = this.props.match.params.id_logistik;
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
 
     axios
       .get(`http://localhost:8000/api/logistik/${logistikId}`)
       .then((response) => {
         this.setState({
-<<<<<<< HEAD
-          id_logistik: response.data.id_logistik,
-          id_kategori: response.data.id_kategori,
-          nama_barang: response.data.nama_barang,
-          stok: response.data.stok,
-          id_supplier: response.data.id_supplier,
-          status: response.data.status,
-          expired: response.data.expired,
-        });
-      });
-=======
           // id_logistik: response.data.id_logistik,
           nama_barang: response.data.nama_barang,
           jenis_kategori: response.data.jenis_kategori,
@@ -77,7 +50,6 @@ class EditDataLogistik extends React.Component {
     // .catch((error) => {
     //   console.log(error);
     // });
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
   }
 
   handleInputChange(event) {
@@ -91,38 +63,6 @@ class EditDataLogistik extends React.Component {
     });
   }
 
-<<<<<<< HEAD
-  // componentDidMount() {
-  //   this.getOptionSupplier();
-  //   this.getOptionKategori();
-  // }
-
-  async getOptionSupplier() {
-    const url = "http://localhost:8000/api/supplier/all";
-    const response = await axios.get(url);
-    this.setState(
-      {
-        suppliers: response.data,
-      },
-      () => {
-        console.log(this.state.suppliers);
-      }
-    );
-  }
-
-  async getOptionKategori() {
-    const url = "http://localhost:8000/api/kategori";
-    const response = await axios.get(url);
-    this.setState(
-      {
-        categories: response.data,
-      },
-      () => {
-        console.log(this.state.categories);
-      }
-    );
-  }
-=======
   // async getOptionSupplier() {
   //   const url = "http://localhost:8000/api/supplier/all";
   //   const response = await axios.get(url);
@@ -148,24 +88,11 @@ class EditDataLogistik extends React.Component {
   //     }
   //   );
   // }
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
 
   onUpdate = (e) => {
     e.preventDefault();
 
     const item = {
-<<<<<<< HEAD
-      id_logistik: this.state.id_logistik,
-      id_kategori: this.state.id_kategori,
-      nama_barang: this.state.nama_barang,
-      stok: this.state.stok,
-      id_supplier: this.state.id_supplier,
-      status: this.state.status,
-      expired: this.state.expired,
-    };
-
-    const logistikId = this.props.match.params.id;
-=======
       // id_logistik: this.state.id_logistik,
       nama_barang: this.state.nama_barang,
 
@@ -179,7 +106,6 @@ class EditDataLogistik extends React.Component {
     };
 
     const logistikId = this.props.match.params.id_logistik;
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
     axios
       .put(`http://localhost:8000/api/logistik/${logistikId}`, item)
       .then((response) => {
@@ -211,10 +137,7 @@ class EditDataLogistik extends React.Component {
   };
 
   render() {
-<<<<<<< HEAD
-=======
     console.log(this.props);
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
     const { suppliers, categories } = this.state;
     return (
       <Container className="container-fluid">
@@ -267,19 +190,11 @@ class EditDataLogistik extends React.Component {
                   className="form-control"
                 >
                   <option value="#"> - Pilih Supplier -</option>
-<<<<<<< HEAD
-                  {suppliers.map((item, supplier) => (
-                    <option key={supplier} value={item.id}>
-                      {item.nama}
-                    </option>
-                  ))}
-=======
                   {/* {suppliers.map((item, supplier) => (
                     <option key={supplier} value={item.id}>
                       {item.nama}
                     </option>
                   ))} */}
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
                 </select>
               </Col>
             </Row>
@@ -297,19 +212,11 @@ class EditDataLogistik extends React.Component {
                   className="form-control"
                 >
                   <option value="#"> - Pilih Kategori -</option>
-<<<<<<< HEAD
-                  {categories.map((item, kategori) => (
-                    <option key={kategori} value={item.id}>
-                      {item.jenis_kategori}
-                    </option>
-                  ))}
-=======
                   {/* {categories.map((item, kategori) => (
                     <option key={kategori} value={item.id}>
                       {item.jenis_kategori}
                     </option>
                   ))} */}
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
                 </select>
               </Col>
               <Col className="col-md-1 offset-1">

@@ -24,93 +24,86 @@ class DataLogistik extends React.Component {
   }
 
   async getList(pageNumber = 1) {
-    try{
-    const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
-    const response =  await axios.get(url,{timeout: 2500});
-    this.setState(
-      {
-        items: response.data,
-        loading: false,
-      },
-      () => {
-        console.log(this.state.items);
-      }
-    );
-    }catch(err){
-    alert(err);
-   }
+    try {
+      const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
+      const response = await axios.get(url, { timeout: 2500 });
+      this.setState(
+        {
+          items: response.data,
+          loading: false,
+        },
+        () => {
+          console.log(this.state.items);
+        }
+      );
+    } catch (err) {
+      alert(err);
+    }
   }
 
   renderLogistikList() {
     const { data, current_page, per_page, total } = this.state.items;
-    const {loading} = this.state;
-    if (loading){
-      return(
-        <div class="loader"></div>
-      )
-    }
-    else{
-    return (
-      <div className="cardTable">
-        <table className="table table-striped">
-          <thead className="border-top-0">
-            <tr>
-              <th>Nama</th>
-              <th>Kategori</th>
-              <th>Stok</th>
-              <th>Supplier</th>
-              <th>Status</th>
-              <th>Expired</th>
-              <th>Opsi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.nama_barang}</td>
-                <td>{item.jenis_kategori}</td>
-                <td>{item.stok}</td>
-                <td>{item.nama}</td>
-                <td>{item.status}</td>
-                <td>{item.expired}</td>
-                <td>
-                  <Link
-<<<<<<< HEAD
-                    to={`/Logistik/EditDataLogistik/${item.id}`}
-=======
-                    to={`/Logistik/EditDataLogistik/${item.id_logistik}`}
->>>>>>> 822c04c768ddff57f2dac63e6c7181795170c973
-                    className="btn btn-warning edit"
-                  >
-                    <img src={icoEdit} alt="edit" className="icoOption" />
-                  </Link>
-                </td>
+    const { loading } = this.state;
+    if (loading) {
+      return <div class="loader"></div>;
+    } else {
+      return (
+        <div className="cardTable">
+          <table className="table table-striped">
+            <thead className="border-top-0">
+              <tr>
+                <th>Nama</th>
+                <th>Kategori</th>
+                <th>Stok</th>
+                <th>Supplier</th>
+                <th>Status</th>
+                <th>Expired</th>
+                <th>Opsi</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.nama_barang}</td>
+                  <td>{item.jenis_kategori}</td>
+                  <td>{item.stok}</td>
+                  <td>{item.nama}</td>
+                  <td>{item.status}</td>
+                  <td>{item.expired}</td>
+                  <td>
+                    <Link
+                      to={`/Logistik/EditDataLogistik/${item.id_logistik}`}
+                      className="btn btn-warning edit"
+                    >
+                      <img src={icoEdit} alt="edit" className="icoOption" />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        <nav aria-label="Page navigation example">
-          <Pagination
-            hideFirstLastPages
-            innerClass="pagination justify-content-center"
-            activePage={current_page}
-            itemsCountPerPage={per_page}
-            totalItemsCount={total}
-            prevPageText={
-              <img src={arrowPrev} alt="prev" className="icoPage" />
-            }
-            nextPageText={
-              <img src={arrowNext} alt="next" className="icoPage" />
-            }
-            itemClass="page-item"
-            linkClass="page-link"
-            onChange={(pageNumber) => this.getList(pageNumber)}
-          />
-        </nav>
-      </div>
-    );
-  }
+          <nav aria-label="Page navigation example">
+            <Pagination
+              hideFirstLastPages
+              innerClass="pagination justify-content-center"
+              activePage={current_page}
+              itemsCountPerPage={per_page}
+              totalItemsCount={total}
+              prevPageText={
+                <img src={arrowPrev} alt="prev" className="icoPage" />
+              }
+              nextPageText={
+                <img src={arrowNext} alt="next" className="icoPage" />
+              }
+              itemClass="page-item"
+              linkClass="page-link"
+              onChange={(pageNumber) => this.getList(pageNumber)}
+            />
+          </nav>
+        </div>
+      );
+    }
   }
 
   render() {

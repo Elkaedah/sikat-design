@@ -16,9 +16,10 @@ class DataSupplier extends React.Component {
     super();
     this.state = {
       q: "",
-      items: null,
+      items: [],
       // alert: null,
       // msg: null,
+      loading: true,
     };
 
     this.onKeyPress = this.onKeyPress.bind(this);
@@ -51,68 +52,78 @@ class DataSupplier extends React.Component {
   }
 
   async getList(pageNumber = 1) {
-    const url = "http://localhost:8000/api/supplier?page=" + pageNumber;
-    const response = await axios.get(url);
-    this.setState(
-      {
-        items: response.data,
-      },
-      () => {
-        console.log(this.state.items);
-      }
-    );
+    try {
+      const url = "http://localhost:8000/api/supplier?page=" + pageNumber;
+      const response = await axios.get(url, { timeout: 2500 });
+      this.setState(
+        {
+          items: response.data,
+          loading: false,
+        },
+        () => {
+          console.log(this.state.items);
+        }
+      );
+    } catch (err) {
+      alert(err);
+    }
   }
 
   renderSupplierList() {
     const { data, current_page, per_page, total } = this.state.items;
-    return (
-      <div className="cardTable">
-        <table className="table table-striped">
-          <thead className="border-top-0">
-            <tr>
-              <th>Nama</th>
-              <th>Alamat</th>
-              <th>Opsi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.nama}</td>
-                <td>{item.alamat}</td>
-                <td>
-                  <Link
-                    to={`/Logistik/EditDataSupplier/${item.id}`}
-                    className="btn btn-warning edit"
-                  >
-                    <img src={icoEdit} alt="edit" className="icoOption" />
-                  </Link>
-                </td>
+    const { loading } = this.state;
+    if (loading) {
+      return <div class="loader"></div>;
+    } else {
+      return (
+        <div className="cardTable">
+          <table className="table table-striped">
+            <thead className="border-top-0">
+              <tr>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Opsi</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.nama}</td>
+                  <td>{item.alamat}</td>
+                  <td>
+                    <Link
+                      to={`/Logistik/EditDataSupplier/${item.id}`}
+                      className="btn btn-warning edit"
+                    >
+                      <img src={icoEdit} alt="edit" className="icoOption" />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        <nav aria-label="Page navigation example">
-          <Pagination
-            hideFirstLastPages
-            innerClass="pagination justify-content-center"
-            activePage={current_page}
-            itemsCountPerPage={per_page}
-            totalItemsCount={total}
-            prevPageText={
-              <img src={arrowPrev} alt="prev" className="icoPage" />
-            }
-            nextPageText={
-              <img src={arrowNext} alt="next" className="icoPage" />
-            }
-            itemClass="page-item"
-            linkClass="page-link"
-            onChange={(pageNumber) => this.getList(pageNumber)}
-          />
-        </nav>
-      </div>
-    );
+          <nav aria-label="Page navigation example">
+            <Pagination
+              hideFirstLastPages
+              innerClass="pagination justify-content-center"
+              activePage={current_page}
+              itemsCountPerPage={per_page}
+              totalItemsCount={total}
+              prevPageText={
+                <img src={arrowPrev} alt="prev" className="icoPage" />
+              }
+              nextPageText={
+                <img src={arrowNext} alt="next" className="icoPage" />
+              }
+              itemClass="page-item"
+              linkClass="page-link"
+              onChange={(pageNumber) => this.getList(pageNumber)}
+            />
+          </nav>
+        </div>
+      );
+    }
   }
 
   render() {
