@@ -26,7 +26,7 @@ class DataLogistik extends React.Component {
   async getList(pageNumber = 1) {
     try {
       const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
-      const response = await axios.get(url, { timeout: 2500 });
+      const response = await axios.get(url, { timeout: 3500 });
       this.setState(
         {
           items: response.data,
@@ -45,7 +45,7 @@ class DataLogistik extends React.Component {
     const { data, current_page, per_page, total } = this.state.items;
     const { loading } = this.state;
     if (loading) {
-      return <div class="loader"></div>;
+      return <div className="loader"></div>;
     } else {
       return (
         <div className="cardTable">
