@@ -8,38 +8,79 @@ class AddDataSupplier extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: "",
-      nama: "",
-      alamat: "",
+      // id: "",
+      // nama: "",
+      // alamat: "",
+      input: {},
+      errors: {},
     };
 
-    this.onSubmit = this.onSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    // const target = event.target;
+    // const value = target.value;
+    // const name = target.name;
+    let input = this.state.input;
+    input[event.target.name] = event.target.value;
 
     this.setState({
-      [name]: value,
+      // [name]: value,
+      input,
     });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:8000/api/supplier", {
-        nama: this.state.nama,
-        alamat: this.state.alamat,
-      })
-      .then((response) => {
-        console.log(response);
-        this.props.history.push("/Logistik/DataSupplier");
-      });
+    if (this.validate()) {
+      const post = this.state.input;
+
+      axios
+        .post("http://localhost:8000/api/supplier", {
+          // nama: this.state.nama,
+          // alamat: this.state.alamat,
+          post,
+        })
+        .then((response) => {
+          console.log(response);
+
+          // validate
+          let input = {};
+          input["nama"] = "";
+          input["alamat"] = "";
+          this.setState({ input: input });
+
+          // alert("Post created successfully.");
+
+          this.props.history.push("/Logistik/DataSupplier");
+        });
+    }
   };
+
+  validate() {
+    let input = this.state.input;
+    let errors = {};
+    let isValid = true;
+
+    if (!input["nama"]) {
+      isValid = false;
+      errors["nama"] = "Please enter your title.";
+    }
+
+    if (!input["alamat"]) {
+      isValid = false;
+      errors["alamat"] = "Please enter your body.";
+    }
+
+    this.setState({
+      errors: errors,
+    });
+
+    return isValid;
+  }
 
   render() {
     return (
@@ -74,9 +115,10 @@ class AddDataSupplier extends React.Component {
                   className="form-control"
                   id="nama"
                   name="nama"
-                  value={this.state.nama}
+                  value={this.state.input.nama}
                   onChange={this.handleInputChange}
                 />
+                <div className="text-danger">{this.state.errors.nama}</div>
               </Col>
             </Row>
             <Row className="alamat">
@@ -89,9 +131,11 @@ class AddDataSupplier extends React.Component {
                   id="alamat"
                   className="form-control"
                   rows="10"
-                  value={this.state.alamat}
+                  value={this.state.input.alamat}
                   onChange={this.handleInputChange}
                 ></textarea>
+
+                <div className="text-danger">{this.state.errors.alamat}</div>
               </Col>
             </Row>
             <Row className="submit">
@@ -99,7 +143,7 @@ class AddDataSupplier extends React.Component {
               <Col className="col-md-9">
                 <input
                   type="submit"
-                  onClick={this.onSubmit.bind(this)}
+                  // onClick={this.onSubmit.bind(this)}
                   className="form-control"
                   value="Tambah Data"
                 />
