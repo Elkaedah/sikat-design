@@ -26,7 +26,7 @@ class DataLogistik extends React.Component {
   async getList(pageNumber = 1) {
     try {
       const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
-      const response = await axios.get(url, { timeout: 3500 });
+      const response = await axios.get(url, { timeout: 10000 });
       this.setState(
         {
           items: response.data,
