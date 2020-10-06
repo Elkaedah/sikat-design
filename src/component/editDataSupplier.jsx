@@ -29,6 +29,7 @@ class EditDataSupplier extends React.Component {
           nama: response.data.nama,
           alamat: response.data.alamat,
         });
+        console.log(response.data);
       });
   }
 

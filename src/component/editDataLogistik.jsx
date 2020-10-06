@@ -12,8 +12,8 @@ class EditDataLogistik extends React.Component {
       nama_barang: "",
       jenis_kategori: "",
       nama: "",
-      // id_supplier: "",
-      // id_kategori: "",
+      id_supplier: "",
+      id_kategori: "",
       stok: "",
       expired: "",
       status: "",
@@ -29,23 +29,24 @@ class EditDataLogistik extends React.Component {
     // this.getOptionSupplier();
     // this.getOptionKategori();
     const logistikId = this.props.match.params.id_logistik;
+    console.log(logistikId);
 
     axios
       .get(`http://localhost:8000/api/logistik/${logistikId}`)
       .then((response) => {
         this.setState({
           // id_logistik: response.data.id_logistik,
-          nama_barang: response.data.nama_barang,
-          jenis_kategori: response.data.jenis_kategori,
-          nama: response.data.nama,
+          nama_barang: response.data[0].nama_barang,
+          jenis_kategori: response.data[0].jenis_kategori,
+          nama: response.data[0].nama,
 
-          // id_supplier: response.data.id_supplier,
-          // id_kategori: response.data.id_kategori,
-          stok: response.data.stok,
-          expired: response.data.expired,
-          status: response.data.status,
+          id_supplier: response.data[0].id_supplier,
+          id_kategori: response.data[0].id_kategori,
+          stok: response.data[0].stok,
+          expired: response.data[0].expired,
+          status: response.data[0].status,
         });
-        console.log(this.state.nama_barang);
+        console.log(response.data[0]);
       });
     // .catch((error) => {
     //   console.log(error);
@@ -138,7 +139,7 @@ class EditDataLogistik extends React.Component {
 
   render() {
     console.log(this.props);
-    const { suppliers, categories } = this.state;
+    // const { suppliers, categories } = this.state;
     return (
       <Container className="container-fluid">
         <div className="editDataLogistik">
@@ -189,7 +190,10 @@ class EditDataLogistik extends React.Component {
                   onChange={this.handleInputChange}
                   className="form-control"
                 >
-                  <option value="#"> - Pilih Supplier -</option>
+                  <option value="{this.state.id_supplier}">
+                    {" "}
+                    {this.state.nama}
+                  </option>
                   {/* {suppliers.map((item, supplier) => (
                     <option key={supplier} value={item.id}>
                       {item.nama}
@@ -211,8 +215,12 @@ class EditDataLogistik extends React.Component {
                   onChange={this.handleInputChange}
                   className="form-control"
                 >
-                  <option value="#"> - Pilih Kategori -</option>
+                  <option value="{this.state.id_kategori}">
+                    {" "}
+                    {this.state.jenis_kategori}
+                  </option>
                   {/* {categories.map((item, kategori) => (
+
                     <option key={kategori} value={item.id}>
                       {item.jenis_kategori}
                     </option>
@@ -259,7 +267,10 @@ class EditDataLogistik extends React.Component {
                   onChange={this.handleInputChange}
                   className="form-control"
                 >
-                  <option value="#"> - Pilih Kondisi Barang -</option>
+                  <option value="{this.state.status}">
+                    {" "}
+                    {this.state.status}
+                  </option>
                   <option value="baik"> Baik </option>
                   <option value="rusak"> Rusak </option>
                 </select>
