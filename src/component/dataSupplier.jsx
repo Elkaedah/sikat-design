@@ -8,75 +8,99 @@ import arrowPrev from "./img/icon/arrow-prev.svg";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
-// import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 
 class DataSupplier extends React.Component {
   constructor() {
     super();
     this.state = {
-      q: "",
       items: [],
-      // alert: null,
-      // msg: null,
       loading: true,
+      query: "",
+      massage: "",
     };
-
-    this.onKeyPress = this.onKeyPress.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.cancel = "";
   }
 
-  handleInputChange(event) {
-    this.setState({
-      q: event.target.value,
-    });
-  }
-
-  onKeyPress = (e) => {
-    if (e.key === "Enter") {
-      const url = "http://localhost:8000/api/supplier/search";
-      const response = axios.post(url, null, { params: this.state.q });
-      this.setState(
-        {
-          items: response.data,
-        },
-        () => {
-          console.log(response);
-        }
-      );
+  onChangeHandle = (event) => {
+    const isi = event.target.value;
+    if (!isi) {
+      this.setState({ massage: "", loading: true }, () => this.onGetData(1));
+    } else {
+      this.setState({ query: isi, loading: true, massage: "" }, () => {
+        this.onSearchData(isi);
+      });
     }
   };
 
-  componentWillMount() {
-    this.getList();
-  }
+  onGetData = (page) => {
+    const url = `http://127.0.0.1:8000/api/supplier?page=${page}`;
+    if (this.cancel) {
+      this.cancel.cancel();
+    }
+    this.cancel = axios.CancelToken.source();
 
-  async getList(pageNumber = 1) {
-    try {
-      const url = "http://localhost:8000/api/supplier?page=" + pageNumber;
-      const response = await axios.get(url, { timeout: 10000 });
-      this.setState(
-        {
+    axios
+      .get(url, { cancelToken: this.cancel.token }, { timeout: 3000 })
+      .then((response) => {
+        this.setState({
           items: response.data,
           loading: false,
-        },
-        () => {
-          console.log(this.state.items);
+          query: "",
+          massage: "",
+        });
+      })
+      .catch((error) => {
+        if (axios.isCancel(error) || error) {
+          this.setState({
+            loading: false,
+            massage: "Failed Data, Please check",
+          });
         }
-      );
-    } catch (err) {
-      alert(err);
-    }
-  }
+      });
+  };
 
-  renderSupplierList() {
+  onSearchData = (data) => {
+    const search = data ? `/search?q=${data}` : ``;
+    const url = `http://127.0.0.1:8000/api/supplier${search}`;
+    //${pageNumber}
+    if (this.cancel) {
+      this.cancel.cancel();
+    }
+    this.cancel = axios.CancelToken.source();
+
+    axios
+      .post(url, { cancelToken: this.cancel.token }, { timeout: 3000 })
+      .then((response) => {
+        const resultNotFound = !response.data ? "Data Kosong" : "";
+        this.setState({
+          items: response.data,
+          massage: resultNotFound,
+          loading: false,
+        });
+      })
+      .catch((error) => {
+        if (axios.isCancel(error) || error) {
+          this.setState({
+            loading: false,
+            massage: "Failed Data, Please check",
+          });
+        }
+      });
+  };
+
+  renderLogistikList() {
     const { data, current_page, per_page, total } = this.state.items;
-    const { loading } = this.state;
+    const { loading, massage } = this.state;
+
     if (loading) {
+      this.onGetData("", "");
       return <div className="loader"></div>;
-    } else {
+    } else if (massage) {
+      return <div>{massage}</div>;
+    } else if (data) {
       return (
-        <div className="cardTable">
+         <div className="cardTable">
           <table className="table table-striped">
             <thead className="border-top-0">
               <tr>
@@ -118,20 +142,23 @@ class DataSupplier extends React.Component {
               }
               itemClass="page-item"
               linkClass="page-link"
-              onChange={(pageNumber) => this.getList(pageNumber)}
+              onChange={(pageNumber) => this.onGetData(pageNumber)}
             />
           </nav>
         </div>
       );
+    } else {
+      return <>{massage}</>;
     }
   }
 
   render() {
-    const { items } = this.state;
+    const { items, query, massage } = this.state;
+    console.log(items);
     return (
       <Container className="container-fluid">
-        <div className="dataSupplier">
-          <h1 className="dataTitle">Data Supplier</h1>
+        <div className="dataLogistik">
+          <h1 className="dataTitle">Data supplier</h1>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
@@ -141,32 +168,34 @@ class DataSupplier extends React.Component {
                 <Link to="/Logistik">Logistik</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                Data Supplier
+                Data Suppplier
               </li>
             </ol>
           </nav>
           <Row>
             <Col className="col-md-6">
-              <input
-                type="text"
-                className="form-control search"
-                placeholder="Cari..."
-                id="q"
-                name="q"
-                value={this.state.q}
-                onChange={this.handleInputChange}
-                onKeyPress={this.onKeyPress}
-              />
-              <img src={icoSearch} alt="search" className="icoSearch" />
+              <form action="#" method="">
+                <input
+                  type="text"
+                  name="query"
+                  className="form-control search"
+                  placeholder="Cari..."
+                  onChange={this.onChangeHandle}
+                  value={query}
+                />
+                <img src={icoSearch} alt="search" className="icoSearch" />
+              </form>
             </Col>
             <Col className="col-md-6">
-              <Link to="/Logistik/AddDataSupplier" className="btn btn-custom1">
+              <Link to="/Logistik/AddDataLogistik" className="btn btn-custom1">
                 Tambah Data
               </Link>
             </Col>
           </Row>
+          {}
+          {/* {massage} */}
 
-          {items && this.renderSupplierList()}
+          {this.renderLogistikList()}
         </div>
       </Container>
     );
@@ -174,3 +203,6 @@ class DataSupplier extends React.Component {
 }
 
 export default DataSupplier;
+
+
+ 
