@@ -34,7 +34,7 @@ class DataSupplier extends React.Component {
   };
 
   onGetData = (page) => {
-    const url = `http://127.0.0.1:8000/api/supplier?page=${page}`;
+    const url = `http://localhost:8000/api/supplier?page=${page}`;
     if (this.cancel) {
       this.cancel.cancel();
     }
@@ -62,7 +62,7 @@ class DataSupplier extends React.Component {
 
   onSearchData = (data) => {
     const search = data ? `/search?q=${data}` : ``;
-    const url = `http://127.0.0.1:8000/api/supplier${search}`;
+    const url = `http://localhost:8000/api/supplier${search}`;
     //${pageNumber}
     if (this.cancel) {
       this.cancel.cancel();
