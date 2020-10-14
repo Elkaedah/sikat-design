@@ -2,7 +2,6 @@ import React from "react";
 import "./style/index.scss";
 import icoSearch from "./img/icon/IcoSearch.svg";
 import icoDetail from "./img/icon/IcoDetail.svg";
-import icoDelete from "./img/icon/IcoDelete.svg";
 import arrowNext from "./img/icon/arrow-next.svg";
 import arrowPrev from "./img/icon/arrow-prev.svg";
 
@@ -89,7 +88,6 @@ class Laporan extends React.Component {
         }
       });
   };
-
 
   renderLaporan() {
     const { data, current_page, per_page, total } = this.state.items;
