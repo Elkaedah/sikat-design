@@ -94,7 +94,7 @@ class Laporan extends React.Component {
     const { loading, massage } = this.state;
 
     if (loading) {
-      this.onGetData("", "");
+      this.onGetData(1);
       return <div className="loader"></div>;
     } else if (massage) {
       return <div>{massage}</div>;
