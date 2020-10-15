@@ -187,7 +187,7 @@ class DataSupplier extends React.Component {
               </form>
             </Col>
             <Col className="col-md-6">
-              <Link to="/Logistik/AddDataLogistik" className="btn btn-custom1">
+              <Link to="/Logistik/AddDataSupplier" className="btn btn-custom1">
                 Tambah Data
               </Link>
             </Col>
