@@ -34,7 +34,7 @@ class DataLogistik extends React.Component {
   };
 
   onGetData = (page) =>{
-    const url=`http://127.0.0.1:8000/api/logistik?page=${page}`
+    const url=`http://localhost:8000/api/logistik?page=${page}`
         if (this.cancel) {
           this.cancel.cancel();
         }
@@ -61,7 +61,7 @@ class DataLogistik extends React.Component {
 
   onSearchData = (data) => {
     const search = data ? `/search?q=${data}` : ``;
-    const url = `http://127.0.0.1:8000/api/logistik${search}`;
+    const url = `http://localhost:8000/api/logistik${search}`;
     //${pageNumber}
     if (this.cancel) {
       this.cancel.cancel();
@@ -209,29 +209,3 @@ class DataLogistik extends React.Component {
 }
 
 export default DataLogistik;
-
-// async getList(pageNumber = 1,data) {
-//   try{
-//   const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
-//   const response =  await axios.get(url,{timeout: 2500});
-//   this.setState(
-//     {
-//       items: response.data,
-//       loading: false,
-//     },
-//     () => {
-//       console.log(this.state.items);
-//     }
-//   );
-//   }catch(error){
-//     // if ( axios.isCancel(error) || error ) {
-//     //   this.setState({
-//     //     loading: true,
-//     //     message: 'Failed to fetch the data. Please check network'
-//     //   })
-//     // }
-//     this.setState({
-//       message: 'Failed to fetch the data. Please check network'
-//     })
-//   }
-// }
