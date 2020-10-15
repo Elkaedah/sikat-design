@@ -38,7 +38,7 @@ function LinkInto({ label, to, activeOnlyWhenExact }) {
             <LinkInto
               label="Logistik"
               to="/Logistik"
-              activeOnlyWhenExact={true}
+              activeOnlyWhenExact={false}
             />
           </li>
           <li>

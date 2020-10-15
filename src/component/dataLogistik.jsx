@@ -16,37 +16,87 @@ class DataLogistik extends React.Component {
     this.state = {
       items: [],
       loading: true,
+      query: "",
+      massage: "",
     };
+    this.cancel = "";
   }
 
-  componentWillMount() {
-    this.getList();
-  }
-
-  async getList(pageNumber = 1) {
-    try {
-      const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
-      const response = await axios.get(url, { timeout: 10000 });
-      this.setState(
-        {
-          items: response.data,
-          loading: false,
-        },
-        () => {
-          console.log(this.state.items);
-        }
-      );
-    } catch (err) {
-      alert(err);
+  onChangeHandle = (event) => {
+    const isi = event.target.value;
+    if (!isi) {
+      this.setState({ massage: "", loading:true }, () => this.onGetData(1));
+    } else {
+      this.setState({ query: isi, loading: true, massage: "" }, () => {
+        this.onSearchData(isi);
+      });
     }
+  };
+
+  onGetData = (page) =>{
+    const url=`http://127.0.0.1:8000/api/logistik?page=${page}`
+        if (this.cancel) {
+          this.cancel.cancel();
+        }
+        this.cancel = axios.CancelToken.source();
+
+        axios.get(url, { cancelToken: this.cancel.token, },{timeout:3000})
+          .then((response) => {
+            this.setState({
+              items: response.data,
+              loading: false,
+              query: "",
+              massage:""
+            })
+          })
+          .catch((error) => {
+            if (axios.isCancel(error) || error) {
+              this.setState({
+                loading: false,
+                massage: "Failed Data, Please check",
+              });
+            }
+          });
   }
+
+  onSearchData = (data) => {
+    const search = data ? `/search?q=${data}` : ``;
+    const url = `http://127.0.0.1:8000/api/logistik${search}`;
+    //${pageNumber}
+    if (this.cancel) {
+      this.cancel.cancel();
+    }
+    this.cancel = axios.CancelToken.source();
+
+    axios.post(url,{cancelToken: this.cancel.token,}, {timeout:3000})
+      .then((response) => {
+        const resultNotFound = !response.data ? "Data Kosong" : "";
+        this.setState({
+          items: response.data,
+          massage: resultNotFound,
+          loading: false,
+        });
+      })
+      .catch((error) => {
+        if (axios.isCancel(error) || error) {
+          this.setState({
+            loading: false,
+            massage: "Failed Data, Please check",
+          });
+        }
+      });
+  };
 
   renderLogistikList() {
     const { data, current_page, per_page, total } = this.state.items;
-    const { loading } = this.state;
+    const { loading, massage } = this.state;
+
     if (loading) {
+      this.onGetData("", "");
       return <div className="loader"></div>;
-    } else {
+    } else if (massage) {
+      return <div>{massage}</div>;
+    } else if (data) {
       return (
         <div className="cardTable">
           <table className="table table-striped">
@@ -98,16 +148,19 @@ class DataLogistik extends React.Component {
               }
               itemClass="page-item"
               linkClass="page-link"
-              onChange={(pageNumber) => this.getList(pageNumber)}
+              onChange={(pageNumber) => this.onGetData(pageNumber)}
             />
           </nav>
         </div>
       );
+    } else {
+      return <>{massage}</>;
     }
   }
 
   render() {
-    const { items } = this.state;
+    const { items, query, massage } = this.state;
+    console.log(items);
     return (
       <Container className="container-fluid">
         <div className="dataLogistik">
@@ -127,11 +180,14 @@ class DataLogistik extends React.Component {
           </nav>
           <Row>
             <Col className="col-md-6">
-              <form action="#" method="post">
+              <form action="#" method="">
                 <input
                   type="text"
+                  name="query"
                   className="form-control search"
                   placeholder="Cari..."
+                  onChange={this.onChangeHandle}
+                  value={query}
                 />
                 <img src={icoSearch} alt="search" className="icoSearch" />
               </form>
@@ -142,6 +198,8 @@ class DataLogistik extends React.Component {
               </Link>
             </Col>
           </Row>
+          {}
+          {/* {massage} */}
 
           {this.renderLogistikList()}
         </div>
@@ -151,3 +209,29 @@ class DataLogistik extends React.Component {
 }
 
 export default DataLogistik;
+
+// async getList(pageNumber = 1,data) {
+//   try{
+//   const url = "http://localhost:8000/api/logistik?page=" + pageNumber;
+//   const response =  await axios.get(url,{timeout: 2500});
+//   this.setState(
+//     {
+//       items: response.data,
+//       loading: false,
+//     },
+//     () => {
+//       console.log(this.state.items);
+//     }
+//   );
+//   }catch(error){
+//     // if ( axios.isCancel(error) || error ) {
+//     //   this.setState({
+//     //     loading: true,
+//     //     message: 'Failed to fetch the data. Please check network'
+//     //   })
+//     // }
+//     this.setState({
+//       message: 'Failed to fetch the data. Please check network'
+//     })
+//   }
+// }
