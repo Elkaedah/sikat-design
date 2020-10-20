@@ -52,7 +52,7 @@ function LinkInto({ label, to, activeOnlyWhenExact }) {
             <LinkInto label="User" to="/Pegawai" activeOnlyWhenExact={false} />
           </li>
           <li>
-            <LinkInto label="Laporan" to="/Laporan" activeOnlyWhenExact={true} />
+            <LinkInto label="Laporan" to="/Laporan" activeOnlyWhenExact={false} />
           </li>
         </ul>
       </div>
