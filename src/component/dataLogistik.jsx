@@ -34,7 +34,7 @@ class DataLogistik extends React.Component {
   };
 
   onGetData = (page) =>{
-    const url=`http://127.0.0.1:8000/api/logistik?page=${page}`
+    const url=`http://localhost:8000/api/logistik?page=${page}`
         if (this.cancel) {
           this.cancel.cancel();
         }
@@ -61,7 +61,7 @@ class DataLogistik extends React.Component {
 
   onSearchData = (data) => {
     const search = data ? `/search?q=${data}` : ``;
-    const url = `http://127.0.0.1:8000/api/logistik${search}`;
+    const url = `http://localhost:8000/api/logistik${search}`;
     //${pageNumber}
     if (this.cancel) {
       this.cancel.cancel();
