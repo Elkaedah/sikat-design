@@ -118,7 +118,7 @@ class Laporan extends React.Component {
                 <td>{item.verifikasi}</td>
                 <td>
                   <Link
-                    to="/DetailDataLaporan"
+                    to="/Laporan/DetailDataLaporan/"
                     className="btn btn-primary detail"
                   >
                     <img
@@ -192,7 +192,7 @@ class Laporan extends React.Component {
               </form>
             </Col>
             <Col className="col-md-6">
-              <Link to="/AddDataLaporan" className="btn btn-custom1">
+              <Link to="/Laporan/AddDataLaporan" className="btn btn-custom1">
                 Tambah Data
               </Link>
             </Col>

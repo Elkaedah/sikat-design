@@ -120,7 +120,7 @@ export default class DataUser extends React.Component {
                   <td>{item.alamat}</td>
                   <td>
                     <Link
-                      to={`/Pegawai/TambahPegawai/${item.id}`}
+                      to={`/Pegawai/User/${item.id}`}
                       className="btn btn-warning edit"
                     >
                       <img src={icoEdit} alt="edit" className="icoOption" />

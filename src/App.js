@@ -80,6 +80,7 @@ const routes = [{
     },
     {
         path: "/Penanggulangan",
+        exact: true,
         component: () => < Penanggulangan / > ,
         title: () => < div > Penanggulangan Bencana < /div>,
     },
@@ -101,6 +102,7 @@ const routes = [{
 
     {
         path: "/Pegawai",
+        exact: true,
         component: () => < DataUser / > ,
         title: () => < div > User < /div>,
     },
@@ -116,16 +118,17 @@ const routes = [{
     },
     {
         path: "/Laporan",
+        exact: true,
         component: () => < Laporan / > ,
         title: () => < div > Laporan < /div>,
     },
     {
-        path: "/AddDataLaporan",
+        path: "/Laporan/AddDataLaporan",
         component: () => < AddDataLaporan / > ,
         title: () => < div > Laporan < /div>,
     },
     {
-        path: "/DetailDataLaporan",
+        path: "/Laporan/DetailDataLaporan",
         component: () => < DetailDataLaporan / > ,
         title: () => < div > Laporan < /div>,
     },

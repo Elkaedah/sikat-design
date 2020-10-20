@@ -61,7 +61,7 @@ export default class User extends React.Component {
                 <Link to="/">Dashboard</Link>
               </li>
               <li class="breadcrumb-item">
-                <Link to="/User">User</Link>
+                <Link to="/Pegawai">Pegawai</Link>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Pegawai
