@@ -88,7 +88,7 @@ class DataSupplier extends React.Component {
       });
   };
 
-  renderLogistikList() {
+  renderSupplierList() {
     const { data, current_page, per_page, total } = this.state.items;
     const { loading, massage } = this.state;
 
@@ -193,7 +193,7 @@ class DataSupplier extends React.Component {
             </Col>
           </Row>
           
-          {this.renderLogistikList()}
+          {this.renderSupplierList()}
         </div>
       </Container>
     );

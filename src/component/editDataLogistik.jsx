@@ -48,18 +48,10 @@ class EditDataLogistik extends React.Component {
         });
         console.log(response.data[0]);
       });
-    // .catch((error) => {
-    //   console.log(error);
-    // });
   }
 
   handleInputChange(event) {
-    // const target = event.target;
-    // const value = target.value;
-    // const name = target.name;
-
     this.setState({
-      // [name]: value,
       [event.target.name]: event.target.value,
     });
   }
@@ -112,14 +104,6 @@ class EditDataLogistik extends React.Component {
       .then((response) => {
         console.log(response);
         this.props.history.push("/Logistik/DataLogistik");
-
-        //   var msg = response.data.success;
-        //   if (msg == true) {
-        //     this.setState({
-        //       message: response.data.message,
-        //     });
-        //     return this.goToHome();
-        //   }
       });
   };
 
@@ -265,13 +249,6 @@ class EditDataLogistik extends React.Component {
             <Row className="submit">
               <Col className="col-md-2"></Col>
               <Col className="col-md-9">
-                {/* <input
-                  type="submit"
-                  onClick={this.onUpdate.bind(this)}
-                  value="Ubah Data"
-                  className="form-control"
-                /> */}
-
                 <button className="form-control">Ubah Data</button>
               </Col>
             </Row>
