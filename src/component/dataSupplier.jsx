@@ -63,7 +63,6 @@ class DataSupplier extends React.Component {
   onSearchData = (data) => {
     const search = data ? `/search?q=${data}` : ``;
     const url = `http://localhost:8000/api/supplier${search}`;
-    //${pageNumber}
     if (this.cancel) {
       this.cancel.cancel();
     }
@@ -172,6 +171,7 @@ class DataSupplier extends React.Component {
               </li>
             </ol>
           </nav>
+
           <Row>
             <Col className="col-md-6">
               <form action="#" method="">
@@ -192,9 +192,7 @@ class DataSupplier extends React.Component {
               </Link>
             </Col>
           </Row>
-          {}
-          {/* {massage} */}
-
+          
           {this.renderLogistikList()}
         </div>
       </Container>
@@ -203,6 +201,3 @@ class DataSupplier extends React.Component {
 }
 
 export default DataSupplier;
-
-
- 

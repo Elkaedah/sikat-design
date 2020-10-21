@@ -63,7 +63,6 @@ class Laporan extends React.Component {
   onSearchData = (data) => {
     const search = data ? `/search?q=${data}` : ``;
     const url = `http://localhost:8000/api/laporan${search}`;
-    //${pageNumber}
     if (this.cancel) {
       this.cancel.cancel();
     }
@@ -158,7 +157,6 @@ class Laporan extends React.Component {
     }
   }
 
-
   render() {
     const { items, query, massage } = this.state;
     console.log(items);
@@ -197,8 +195,6 @@ class Laporan extends React.Component {
               </Link>
             </Col>
           </Row>
-          {}
-          {/* {massage} */}
 
           {this.renderLaporan()}            
         </div>
