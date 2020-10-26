@@ -9,17 +9,24 @@ import profile from "./component/img/profile-exam.jpg";
 
 // Logistik
 import Logistik from "./component/logistik";
+////// DataLogistik
 import DataLogistik from "./component/dataLogistik";
 import AddDataLogistik from "./component/addDataLogistik";
 import EditDataLogistik from "./component/editDataLogistik";
+//// DataSupplier
 import DataSupplier from "./component/dataSupplier";
 import AddDataSupplier from "./component/addDataSupplier";
 import EditDataSupplier from "./component/editDataSupplier";
 
 // Penanggulangan
 import Penanggulangan from "./component/penanggulangan";
+////// DataBencana
 import DataBencana from "./component/dataBencana";
+import AddDataBencana from "./component/addDataBencana";
+import EditDataBencana from "./component/editDataBencana";
+//// DataBantuan
 import DataBantuan from "./component/dataBantuan";
+//// DataTimRelawan
 import DataTimRelawan from "./component/dataTimRelawan";
 
 // User
@@ -79,6 +86,7 @@ const routes = [
     component: () => <EditDataSupplier />,
     title: () => <div> Logistik </div>,
   },
+
   {
     path: "/Penanggulangan",
     exact: true,
@@ -88,17 +96,27 @@ const routes = [
   {
     path: "/Penanggulangan/DataBencana",
     component: () => <DataBencana />,
-    title: () => <div> Data Bencana </div>,
+    title: () => <div> Penanggulangan Bencana </div>,
+  },
+  {
+    path: "/Penanggulangan/AddDataBencana",
+    component: () => <AddDataBencana />,
+    title: () => <div> Penanggulangan Bencana </div>,
+  },
+  {
+    path: "/Penanggulangan/EditDataBencana",
+    component: () => <EditDataBencana />,
+    title: () => <div> Penanggulangan Bencana </div>,
   },
   {
     path: "/Penanggulangan/DataBantuan",
     component: () => <DataBantuan />,
-    title: () => <div> Data Bantuan </div>,
+    title: () => <div> Penanggulangan Bencana </div>,
   },
   {
     path: "/Penanggulangan/DataTimRelawan",
     component: () => <DataTimRelawan />,
-    title: () => <div> Data Tim Relawan </div>,
+    title: () => <div> Penanggulangan Bencana </div>,
   },
 
   {

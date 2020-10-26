@@ -62,7 +62,6 @@ class DataLogistik extends React.Component {
   onSearchData = (data) => {
     const search = data ? `/search?q=${data}` : ``;
     const url = `http://localhost:8000/api/logistik${search}`;
-    //${pageNumber}
     if (this.cancel) {
       this.cancel.cancel();
     }
@@ -198,8 +197,6 @@ class DataLogistik extends React.Component {
               </Link>
             </Col>
           </Row>
-          {}
-          {/* {massage} */}
 
           {this.renderLogistikList()}
         </div>
