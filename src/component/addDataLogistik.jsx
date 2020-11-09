@@ -115,7 +115,6 @@ const AddDataLogistik = (props) => {
                 ref={register({ required: true })}
                 value={logistik.id_supplier}
                 onChange={handleInputChange}
-                // className="form-control"
                 className={
                   errors?.id_supplier
                     ? "is-invalid form-control"
@@ -151,7 +150,6 @@ const AddDataLogistik = (props) => {
                 ref={register({ required: true })}
                 value={logistik.id_kategori}
                 onChange={handleInputChange}
-                // className="form-control"
                 className={
                   errors?.id_kategori
                     ? "is-invalid form-control"
@@ -227,7 +225,6 @@ const AddDataLogistik = (props) => {
                 ref={register({ required: true })}
                 value={logistik.status}
                 onChange={handleInputChange}
-                // className="form-control"
                 className={
                   errors?.status ? "is-invalid form-control" : "form-control"
                 }
