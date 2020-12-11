@@ -1,7 +1,7 @@
 import React from "react";
 import "./style/index.scss";
 import icoSearch from "./img/icon/IcoSearch.svg";
-import icoEdit from "./img/icon/IcoEdit.svg";
+// import icoEdit from "./img/icon/IcoEdit.svg";
 import arrowNext from "./img/icon/arrow-next.svg";
 import arrowPrev from "./img/icon/arrow-prev.svg";
 
@@ -105,7 +105,6 @@ class DataBencana extends React.Component {
              <tr>
                <th>Bencana</th>
                <th>Lokasi</th>
-               <th>Opsi</th>
              </tr>
            </thead>
            <tbody>
@@ -126,14 +125,6 @@ class DataBencana extends React.Component {
              <tr>
                  <td>Banjir</td>
                  <td>malang</td>
-                 <td>
-                   <Link
-                     to="/Penanggulangan/EditDataBencana"
-                     className="btn btn-warning edit"
-                   >
-                     <img src={icoEdit} alt="edit" className="icoOption" />
-                   </Link>
-                 </td>
                </tr>
            </tbody>
          </table>

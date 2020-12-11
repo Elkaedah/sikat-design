@@ -20,10 +20,10 @@ import EditDataSupplier from "./component/editDataSupplier";
 
 // Penanggulangan
 import Penanggulangan from "./component/penanggulangan";
-////// DataBencana
+//// DataBencana
 import DataBencana from "./component/dataBencana";
-import AddDataBencana from "./component/addDataBencana";
-import EditDataBencana from "./component/editDataBencana";
+// import AddDataBencana from "./component/addDataBencana";
+// import EditDataBencana from "./component/editDataBencana";
 //// DataBantuan
 import DataBantuan from "./component/dataBantuan";
 //// DataTimRelawan
@@ -98,16 +98,16 @@ const routes = [
     component: () => <DataBencana />,
     title: () => <div> Penanggulangan Bencana </div>,
   },
-  {
-    path: "/Penanggulangan/AddDataBencana",
-    component: () => <AddDataBencana />,
-    title: () => <div> Penanggulangan Bencana </div>,
-  },
-  {
-    path: "/Penanggulangan/EditDataBencana",
-    component: () => <EditDataBencana />,
-    title: () => <div> Penanggulangan Bencana </div>,
-  },
+  // {
+  //   path: "/Penanggulangan/AddDataBencana",
+  //   component: () => <AddDataBencana />,
+  //   title: () => <div> Penanggulangan Bencana </div>,
+  // },
+  // {
+  //   path: "/Penanggulangan/EditDataBencana",
+  //   component: () => <EditDataBencana />,
+  //   title: () => <div> Penanggulangan Bencana </div>,
+  // },
   {
     path: "/Penanggulangan/DataBantuan",
     component: () => <DataBantuan />,
